@@ -1,0 +1,21 @@
+/**
+ CSS styles for radreport.org forms
+ */
+
+#session-info-table {
+    width: 100%;
+}
+
+#session-info-table td {
+    padding: 2px 6px;
+}
+
+.clearfix .pull-left {
+    float: left;
+    text-align: left;
+}
+
+.clearfix .pull-right {
+    float: right;
+    text-align: right;
+}

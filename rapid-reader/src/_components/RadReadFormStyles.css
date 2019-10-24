@@ -3,13 +3,36 @@
  */
 
 #form-template-wrapper {
-
+ /* [*L*] */
 }
 
-#form-template-wrapper select {
+#form-template-wrapper section[data-section-name] {
+    margin-bottom: 20px;
+    padding: 6px 10px;
+    border: 1px solid #303030;
+    border-radius: 4px;
+}
+
+#form-template-wrapper section[data-section-name] label {
+    display: block;
+}
+
+#form-template-wrapper section[data-section-name] > header:first-of-type {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #505050;
+}
+
+#form-template-wrapper section[data-section-name] select {
     max-width: 100%;
 }
 
-#form-template-wrapper textarea {
+#form-template-wrapper section[data-section-name] textarea {
     width: 100%;
+}
+
+#form-template-wrapper section[data-section-name] input[type="checkbox"],
+#form-template-wrapper section[data-section-name] input[type="radio"] {
+    margin-right: 6px;
 }

@@ -17,7 +17,7 @@ function Worklists(props){
     }
 
     function renderWorklist(data){
-        return (data.ResultSet && data.ResultSet.Result) ? data.ResultSet.Result.map((item) => {
+        return (data.ResultSet && data.ResultSet.Result) ? data.ResultSet.Result.map(function(item){
 
                 // only return searches that start with 'read' that contain 'SessionData' search results
                 if (isWorkList(item)) {

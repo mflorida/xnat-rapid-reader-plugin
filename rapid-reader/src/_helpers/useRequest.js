@@ -33,7 +33,7 @@ export function useRequest(opts, toWatch){
 
     useEffect(() => {
         doRequest();
-    }, toWatch || []);
+    }, toWatch ? [toWatch] : []);
 
     return [response, request];
 
