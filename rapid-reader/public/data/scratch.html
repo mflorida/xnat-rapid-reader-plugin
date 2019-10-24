@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="theme-color" content="#000000"/>
+    <!--
+      Notice the use of %PUBLIC_URL%...
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Venture to the Edge of Functionality</title>
+    <link rel="stylesheet" href="_lib/bootstrap/css/bootstrap.min.css"/>
+    <style type="text/css">
+
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        input, textarea {
+            width: 100%;
+        }
+
+        textarea {
+            font-family: Menlo, Monaco, Courier, monospace;
+            font-size: 12px;
+        }
+
+    </style>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="_lib/x0/x0.js"></script>
+    <script src="_lib/x0/x0.spawnElement.js"></script>
+    <script src="_lib/x0/x0.spawnXML.js"></script>
+
+    <script src="js/readerConfig.js"></script>
+
+    <script src="js/submitXML.js"></script>
+
+    <script src="js/radGenRadiologyReadSpawner.js"></script>
+
+</head>
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div style="width:600px;margin:0 auto;text-align:center;">
+    <form id="submit-xml-test" action="#!" style="text-align:left;">
+
+        <label for="project-id">Project ID</label>
+        <br>
+        <input type="text" id="project-id" name="projectId" value="Fruit_Struct">
+
+        <br>
+        <br>
+
+        <label for="subject-id">Subject ID</label>
+        <br>
+        <input type="text" id="subject-id" name="subjectId" value="XNAT_S00001">
+
+        <br>
+        <br>
+
+        <label for="expt-id">Experiment ID</label>
+        <br>
+        <input type="text" id="expt-id" name="exptId" value="XNAT_E00001">
+
+        <br>
+        <br>
+
+        <label for="xml-template">XML Template URL</label>
+        <br>
+        <input type="text" id="xml-template" value="_templates/BoneAgeTemplate.xml">
+
+        <br>
+        <br>
+
+        <label for="data-object">Data Object</label>
+        <br>
+        <textarea id="data-object" rows="30"></textarea>
+
+        <br>
+        <br>
+
+        <label for="xml-submit-url">XML Submit URL</label>
+        <br>
+        <input type="text" id="xml-submit-url" value="/data/projects/__PROJECT_ID__/subjects/__SUBJECT_ID__/experiments/__EXPT_ID__/assessors?inbody=true&xsiType=rad:genRadiologyReadData&label=__LABEL__">
+
+        <br>
+        <br>
+
+        <label for="xml-submit-method">XML Submit Method</label>
+        <br>
+        <input type="text" id="xml-submit-method" value="POST">
+
+        <br>
+        <br>
+
+        <button type="button" id="submit-template">Submit Template</button>
+
+        <button type="button" id="submit-spawned">Submit Spawned</button>
+
+        <br>
+        <br>
+
+    </form>
+
+    <script>
+        (function(){
+
+            function getById(id){
+                return document.getElementById(id);
+            }
+
+            function getValueById(id){
+                var el = getById(id);
+                return x0.firstDefined(el.value, (el.valueOf ? (el.valueOf() || '') : ''), '');
+            }
+
+            var dataObjectModel = {
+                projectId: '',
+                subjectId: '',
+                exptId: '',
+                modality: '',
+                reader: '',
+                procedure: [{
+                    fieldId: 'T101_2',
+                    name: 'Procedure',
+                    value: '',
+                    description: ''
+                }],
+                technique: '',
+                clinical_information: [{
+                    fieldId: 'T101_5',
+                    name: 'Clinical Information',
+                    value: '',
+                    description: ''
+                }],
+                comparison: [{
+                    fieldId: 'T101_6',
+                    name: 'Comparison',
+                    value: '',
+                    description: ''
+                }],
+                findings: [
+
+                    {
+                        fieldId: 'T101_9',
+                        name: 'Sex',
+                        value: '',
+                        description: ''
+                    },
+
+                    {
+                        fieldId: 'T101_12',
+                        name: 'Chronological Age',
+                        value: '',
+                        description: ''
+                    },
+
+                    {
+                        fieldId: 'T101_15',
+                        name: 'Bone Age',
+                        value: '',
+                        description: ''
+                    },
+
+                    {
+                        fieldId: 'T101_18',
+                        name: 'Standard Deviation',
+                        value: '',
+                        units: 'months',
+                        description: ''
+                    },
+
+                    {
+                        fieldId: 'T101_8',
+                        name: 'Findings',
+                        value: '',
+                        description: ''
+                    }
+
+                ],
+                diagnosis: '',
+                impression: [{
+                    fieldId: 'T101_20',
+                    name: 'Impression',
+                    value: '',
+                    description: ''
+                }]
+            };
+
+            var dataObjectTextarea = getById('data-object');
+
+            dataObjectTextarea.defaultValue = JSON.stringify(dataObjectModel, null, 2);
+
+
+            // try to submit the processed XML
+            var submitXmlTestForm = getById('submit-xml-test');
+
+            var submitTemplate = getById('submit-template');
+            var submitSpawned  = getById('submit-spawned');
+
+            submitTemplate.addEventListener('click', function(e){
+                e.preventDefault();
+
+                var projectId = getValueById('project-id');
+                var subjectId = getValueById('subject-id');
+                var exptId    = getValueById('expt-id');
+
+                var xmlUrl    = getValueById('xml-template');
+                var data      = JSON.parse(dataObjectTextarea.value);
+                var submitUrl = getValueById('xml-submit-url');
+                var method    = getValueById('xml-submit-method');
+
+                submitUrl = submitUrl.replace('__PROJECT_ID__', projectId);
+                submitUrl = submitUrl.replace('__SUBJECT_ID__', subjectId);
+                submitUrl = submitUrl.replace('__EXPT_ID__', exptId);
+                submitUrl = submitUrl.replace('__LABEL__', 'READ_' + Date.now());
+
+                data.projectId = projectId || data.projectId || '';
+                data.subjectId = subjectId || data.subjectId || '';
+                data.exptId    = exptId || data.exptId || '';
+                data.modality  = data.modality || 'MR';
+
+                // alias 'findings' to 'finding'
+                data.finding = data.findings;
+
+                var xmlString = window.genRadReadSpawnXML(data).get();
+
+                window.submitXML(null, xmlString, submitUrl, method);
+
+            });
+
+        })();
+    </script>
+
+
+</div>
+</body>
+</html>

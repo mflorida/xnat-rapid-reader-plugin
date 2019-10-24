@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rad:GenRadiologyRead
+    xmlns:wrk="http://nrg.wustl.edu/workflow"
+    xmlns:scr="http://nrg.wustl.edu/scr"
+    xmlns:rad="http://nrg.wustl.edu/rad"
+    xmlns:xnat="http://nrg.wustl.edu/xnat"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    project="{{__PROJECT__}}"
+    xsi:schemaLocation="http://nrg.wustl.edu/workflow http://10.100.100.17/xapi/schemas/workflow http://nrg.wustl.edu/catalog http://10.100.100.17/schemas/catalog.xsd http://nrg.wustl.edu/pipe http://10.100.100.17/schemas/repository.xsd http://nrg.wustl.edu/rad http://10.100.100.17/schemas/radRead.xsd http://nrg.wustl.edu/scr http://10.100.100.17/schemas/screeningAssessment.xsd http://nrg.wustl.edu/arc http://10.100.100.17/schemas/project.xsd http://icr.ac.uk/icr http://10.100.100.17/schemas/roi.xsd http://nrg.wustl.edu/xnat http://10.100.100.17/schemas/xnat.xsd http://nrg.wustl.edu/val http://10.100.100.17/schemas/protocolValidation.xsd http://nrg.wustl.edu/rad http://10.100.100.17/schemas/genRadRead.xsd http://nrg.wustl.edu/xnat_assessments http://10.100.100.17/schemas/assessments.xsd http://www.nbirn.net/prov http://10.100.100.17/schemas/birnprov.xsd http://nrg.wustl.edu/security http://10.100.100.17/schemas/security.xsd">
+    <xnat:imageSession_ID>
+        {{__IMAGESESSION_ID__}}
+    </xnat:imageSession_ID>
+    <rad:modality>
+        {{__MODALITY__}}
+    </rad:modality>
+    <rad:reader>
+
+        <!-- current user -->
+
+        {{__READER__}}
+
+    </rad:reader>
+    <rad:procedure>
+
+        {{__PROCEDURE__}}
+
+        <!--
+        [{
+            "T101_2" : {
+                "name": "Procedure",
+                "value": "left",
+                "description": "A single PA view of the left hand and wrist was obtained for determination of bone age."
+            }
+        }]
+        -->
+
+    </rad:procedure>
+    <rad:technique>
+
+        {{__TECHNIQUE__}}
+
+        <!-- [] -->
+
+    </rad:technique>
+    <rad:clinical_info>
+
+        {{__CLINICAL_INFO__}}
+
+        <!--
+        [{
+            "T101_5": {
+                "name": "Clinical information",
+                "value": ""
+            }
+        }]
+        -->
+
+    </rad:clinical_info>
+    <rad:comparison>
+
+        {{__COMPARISON__}}
+
+        <!--
+        [{
+            "T101_6": {
+                "name": "Comparison",
+                "value": "None."
+            }
+        }]
+        -->
+
+    </rad:comparison>
+    <rad:findings normal_status="1">
+
+        {{__FINDINGS__}}
+
+        <!--
+        [{
+            "T101_9": {
+                "name": "Sex",
+                "value": "Male",
+                "description": "Male"
+            },
+            "T101_12": {
+                "name": "Chronological age",
+                "value": "11"
+            },
+            "T101_15": {
+                "name": "Bone age",
+                "value": "12"
+            },
+            "T101_18": {
+                "name": "Standard deviation",
+                "value": "12",
+                "field-units": "months"
+            },
+            "T101_8": {
+                "name": "Findings",
+                "value": ""
+            }
+        }]
+        -->
+
+    </rad:findings>
+    <rad:diagnosis>
+
+        {{__DIAGNOSIS__}}
+
+        <!-- [] -->
+
+    </rad:diagnosis>
+    <rad:impression>
+
+        {{__IMPRESSION__}}
+
+        <!--
+        [{
+            "T101_20": {
+                "name": "Impression",
+                "value": "Normal",
+                "description": "Normal"
+            }
+        }]
+        -->
+
+    </rad:impression>
+    <rad:read_template>
+
+        {{__READ_TEMPLATE__}}
+
+        <!-- 000101 -->
+
+    </rad:read_template>
+    <rad:other>
+
+        {{__OTHER__}}
+
+        <!-- [] -->
+
+    </rad:other>
+</rad:GenRadiologyRead>

@@ -1,0 +1,510 @@
+{
+    "about": {
+        "note": "This 'about' field is not in the output from radreport.org, but is included here for reference.",
+        "url": "https://phpapi.rsna.org/radreport/v1/templates?limit=50&page=1&sort=id&order=asc",
+        "url-note": "This is the url used to generate the included JSON. The results may vary depending on available templates."
+    },
+    "SUCCESS": true,
+    "DATA": [
+        {
+            "id": "1",
+            "template_version": "e1be795e-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Generic Report (Diagnostic)",
+            "lang": "English",
+            "created": "2011-02-26 00:00:00",
+            "specialty": null,
+            "specCode": null,
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "4",
+            "template_version": "e1be87e6-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "CT Brain",
+            "lang": "English",
+            "created": "2009-12-01 00:00:00",
+            "specialty": "Computed Tomography,Neuroradiology,Emergency Radiology",
+            "specCode": "CT,NR,ER",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "6",
+            "template_version": "e1be9092-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "CT Appendicitis",
+            "lang": "English",
+            "created": "2010-12-01 00:00:00",
+            "specialty": "Computed Tomography,Emergency Radiology,Gastrointestinal Radiology",
+            "specCode": "CT,ER,GI",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "7",
+            "template_version": "e1be9559-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "CT Calcium Score",
+            "lang": "English",
+            "created": "2009-12-01 00:00:00",
+            "specialty": "Computed Tomography,Cardiac Radiology",
+            "specCode": "CT,CA",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "11",
+            "template_version": "e1bea9f3-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "CT Liver Surveillance",
+            "lang": "English",
+            "created": "2010-11-16 00:00:00",
+            "specialty": "Computed Tomography,Gastrointestinal Radiology,Oncologic Imaging",
+            "specCode": "CT,GI,OI",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "13",
+            "template_version": "e1beb2f0-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "CT Neck",
+            "lang": "English",
+            "created": "2009-12-01 00:00:00",
+            "specialty": "Computed Tomography,Head and Neck,Neuroradiology,Musculoskeletal Radiology",
+            "specCode": "CT,HN,NR,MK",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "16",
+            "template_version": "e1bec0fe-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "CT Onco Lung Mass",
+            "lang": "English",
+            "created": "2009-12-01 00:00:00",
+            "specialty": "Computed Tomography,Oncologic Imaging,Chest Radiology",
+            "specCode": "CT,OI,CH",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "19",
+            "template_version": "e1bed237-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "CT Onco Renal Mass",
+            "lang": "English",
+            "created": "2009-12-01 00:00:00",
+            "specialty": "Computed Tomography,Oncologic Imaging,Genitourinary Radiology",
+            "specCode": "CT,OI,GU",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "25",
+            "template_version": "e1bef475-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "CT Pulmonary Veins",
+            "lang": "English",
+            "created": "2009-12-01 00:00:00",
+            "specialty": "Computed Tomography,Cardiac Radiology,Chest Radiology",
+            "specCode": "CT,CA,CH",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "28",
+            "template_version": "e1bf02d9-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "CT Renal Stone",
+            "lang": "English",
+            "created": "2009-10-14 00:00:00",
+            "specialty": "Computed Tomography,Genitourinary Radiology,Emergency Radiology",
+            "specCode": "CT,GU,ER",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "32",
+            "template_version": "e1c01108-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Fleischner Society Guidelines",
+            "lang": "English",
+            "created": "0000-00-00 00:00:00",
+            "specialty": "Chest Radiology,Oncologic Imaging",
+            "specCode": "CH,OI",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "41",
+            "template_version": "e1c04867-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "MR Ankle",
+            "lang": "English",
+            "created": "2009-10-16 00:00:00",
+            "specialty": "Magnetic Resonance Imaging,Musculoskeletal Radiology",
+            "specCode": "MR,MK",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "43",
+            "template_version": "e1c0562b-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "MR Bladder",
+            "lang": "English",
+            "created": "2010-02-23 00:00:00",
+            "specialty": "Magnetic Resonance Imaging,Genitourinary Radiology",
+            "specCode": "MR,GU",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "44",
+            "template_version": "e1c059fd-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "MR Brachial Plexus",
+            "lang": "English",
+            "created": "2010-10-19 00:00:00",
+            "specialty": "Magnetic Resonance Imaging,Neuroradiology,Chest Radiology",
+            "specCode": "MR,NR,CH",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "45",
+            "template_version": "e1c05fac-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "MR Brain",
+            "lang": "English",
+            "created": "2009-12-01 00:00:00",
+            "specialty": "Magnetic Resonance Imaging,Neuroradiology",
+            "specCode": "MR,NR",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "47",
+            "template_version": "e1c06a81-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Cardiac MRI: Right Heart Failure",
+            "lang": "English",
+            "created": "2010-11-30 00:00:00",
+            "specialty": "Magnetic Resonance Imaging,Cardiac Radiology,Chest Radiology",
+            "specCode": "MR,CA,CH",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "48",
+            "template_version": "e1c06f48-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Cardiac MRI: Adenosine Stress Protocol",
+            "lang": "English",
+            "created": "2009-12-01 00:00:00",
+            "specialty": "Magnetic Resonance Imaging,Cardiac Radiology,Chest Radiology",
+            "specCode": "MR,CA,CH",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "49",
+            "template_version": "e1c072e7-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Cardiac MRI: Function and Viability",
+            "lang": "English",
+            "created": "2010-12-07 00:00:00",
+            "specialty": "Magnetic Resonance Imaging,Cardiac Radiology,Chest Radiology",
+            "specCode": "MR,CA,CH",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "51",
+            "template_version": "e1c07eae-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "MR Enterography",
+            "lang": "English",
+            "created": "2010-06-03 00:00:00",
+            "specialty": "Magnetic Resonance Imaging,Gastrointestinal Radiology",
+            "specCode": "MR,GI",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "55",
+            "template_version": "e1c092dc-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "MR Hip",
+            "lang": "English",
+            "created": "2009-10-16 00:00:00",
+            "specialty": "Magnetic Resonance Imaging,Musculoskeletal Radiology",
+            "specCode": "MR,MK",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "65",
+            "template_version": "e1c0c9c6-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "MR Orbits",
+            "lang": "English",
+            "created": "2010-10-26 00:00:00",
+            "specialty": "Magnetic Resonance Imaging,Neuroradiology",
+            "specCode": "MR,NR",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "73",
+            "template_version": "e1c0e9aa-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "MR Wrist",
+            "lang": "English",
+            "created": "2009-12-01 00:00:00",
+            "specialty": "Magnetic Resonance Imaging,Musculoskeletal Radiology",
+            "specCode": "MR,MK",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "79",
+            "template_version": "e1c0f4b5-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "NM Bone Scan",
+            "lang": "English",
+            "created": "2009-12-01 00:00:00",
+            "specialty": "Nuclear Medicine,Pediatric Radiology,Musculoskeletal Radiology",
+            "specCode": "NM,PD,MK",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "80",
+            "template_version": "e1c0fa72-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "NM Hepatobiliary",
+            "lang": "English",
+            "created": "2009-12-01 00:00:00",
+            "specialty": "Nuclear Medicine,Gastrointestinal Radiology",
+            "specCode": "NM,GI",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "84",
+            "template_version": "e1c10c05-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "PET-CT Oncologic",
+            "lang": "English",
+            "created": "2009-12-01 00:00:00",
+            "specialty": "Computed Tomography,Nuclear Medicine,Oncologic Imaging",
+            "specCode": "CT,NM,OI",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "92",
+            "template_version": "e1c13410-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "US Pelvis",
+            "lang": "English",
+            "created": "2009-10-18 00:00:00",
+            "specialty": "Ultrasound,Genitourinary Radiology,OB/GYN Radiology",
+            "specCode": "US,GU,OB",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "94",
+            "template_version": "e1c13c4d-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "US Scrotum",
+            "lang": "English",
+            "created": "2010-11-04 00:00:00",
+            "specialty": "Ultrasound,Genitourinary Radiology,Emergency Radiology",
+            "specCode": "US,GU,ER",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "95",
+            "template_version": "e1c141f0-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "US Thoracentesis",
+            "lang": "English",
+            "created": "2010-10-12 00:00:00",
+            "specialty": "Ultrasound,Chest Radiology,Interventional Radiology",
+            "specCode": "US,CH,IR",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "98",
+            "template_version": "e1c14c4f-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "US Liver - TIPS",
+            "lang": "English",
+            "created": "2010-11-14 00:00:00",
+            "specialty": "Ultrasound,Vascular Imaging,Gastrointestinal Radiology",
+            "specCode": "US,VI,GI",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "99",
+            "template_version": "e1c14ee6-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Abdomen Xray",
+            "lang": "English",
+            "created": "2010-11-04 00:00:00",
+            "specialty": "Gastrointestinal Radiology,Genitourinary Radiology,Emergency Radiology",
+            "specCode": "GI,GU,ER",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "100",
+            "template_version": "e1c153fd-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Abdomen Series",
+            "lang": "English",
+            "created": "2010-11-04 00:00:00",
+            "specialty": "Gastrointestinal Radiology,Emergency Radiology,Genitourinary Radiology",
+            "specCode": "GI,ER,GU",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "101",
+            "template_version": "e1c1585f-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Bone Age",
+            "lang": "English",
+            "created": "2009-12-01 00:00:00",
+            "specialty": "Pediatric Radiology,Musculoskeletal Radiology",
+            "specCode": "PD,MK",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "103",
+            "template_version": "e1c161cb-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Chest Xray - PICC",
+            "lang": "English",
+            "created": "2009-12-01 00:00:00",
+            "specialty": "Chest Radiology",
+            "specCode": "CH",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "105",
+            "template_version": "e1c16ba4-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Esophagram",
+            "lang": "English",
+            "created": "2010-09-22 00:00:00",
+            "specialty": "Gastrointestinal Radiology",
+            "specCode": "GI",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "107",
+            "template_version": "e1c176cb-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Neonatal Enema",
+            "lang": "English",
+            "created": "2009-12-01 00:00:00",
+            "specialty": "Pediatric Radiology,Gastrointestinal Radiology,Emergency Radiology",
+            "specCode": "PD,GI,ER",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "108",
+            "template_version": "e1c17bf4-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Peds Swallow",
+            "lang": "English",
+            "created": "2009-12-01 00:00:00",
+            "specialty": "Pediatric Radiology,Gastrointestinal Radiology",
+            "specCode": "PD,GI",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "109",
+            "template_version": "e1c1828e-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Peds Upper GI",
+            "lang": "English",
+            "created": "2009-12-01 00:00:00",
+            "specialty": "Pediatric Radiology,Gastrointestinal Radiology",
+            "specCode": "PD,GI",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "110",
+            "template_version": "e1c185ae-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Peds VCUG",
+            "lang": "English",
+            "created": "2009-12-01 00:00:00",
+            "specialty": "Pediatric Radiology,Genitourinary Radiology",
+            "specCode": "PD,GU",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "111",
+            "template_version": "e1c188cc-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Skeletal Survey",
+            "lang": "English",
+            "created": "2009-12-01 00:00:00",
+            "specialty": "Pediatric Radiology,Musculoskeletal Radiology,Emergency Radiology",
+            "specCode": "PD,MK,ER",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "112",
+            "template_version": "e1c18d95-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Upper GI",
+            "lang": "English",
+            "created": "2010-09-22 00:00:00",
+            "specialty": "Gastrointestinal Radiology",
+            "specCode": "GI",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "116",
+            "template_version": "e1c19838-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "CT Chest Pulmonary Embolism",
+            "lang": "English",
+            "created": "2011-04-25 00:00:00",
+            "specialty": "Chest Radiology,Computed Tomography,Emergency Radiology,Vascular Imaging",
+            "specCode": "CH,CT,ER,VI",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "117",
+            "template_version": "e1c19c7d-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "TC Cálculos Renales",
+            "lang": "Spanish",
+            "created": "2011-05-05 00:00:00",
+            "specialty": "Computed Tomography,Emergency Radiology,Genitourinary Radiology",
+            "specCode": "CT,ER,GU",
+            "TLAP_Approved": null
+        },
+        {
+            "id": "124",
+            "template_version": "e1c1a1bf-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "腹部X光",
+            "lang": "Chinese",
+            "created": "2011-07-19 00:00:00",
+            "specialty": "Gastrointestinal Radiology,Genitourinary Radiology,Emergency Radiology",
+            "specCode": "GI,GU,ER",
+            "TLAP_Approved": null
+        },
+        {
+            "id": "127",
+            "template_version": "e1c1a3f3-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "超声引导下胸腔穿刺",
+            "lang": "Chinese",
+            "created": "2011-07-20 00:00:00",
+            "specialty": "Ultrasound,Chest Radiology,Interventional Radiology",
+            "specCode": "US,CH,IR",
+            "TLAP_Approved": null
+        },
+        {
+            "id": "129",
+            "template_version": "e1c1a614-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Kemik Yaşı",
+            "lang": "Turkish",
+            "created": "2011-07-20 00:00:00",
+            "specialty": "Pediatric Radiology,Musculoskeletal Radiology",
+            "specCode": "PD,MK",
+            "TLAP_Approved": null
+        },
+        {
+            "id": "130",
+            "template_version": "e1c1aa9b-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "超声 腹膜后",
+            "lang": "Chinese",
+            "created": "2011-07-20 00:00:00",
+            "specialty": "Ultrasound,Genitourinary Radiology,Emergency Radiology",
+            "specCode": "US,GU,ER",
+            "TLAP_Approved": null
+        },
+        {
+            "id": "131",
+            "template_version": "e1c1ad07-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "骨龄",
+            "lang": "Chinese",
+            "created": "2011-07-20 00:00:00",
+            "specialty": "Pediatric Radiology,Musculoskeletal Radiology",
+            "specCode": "PD,MK",
+            "TLAP_Approved": null
+        },
+        {
+            "id": "132",
+            "template_version": "e1c1b0ab-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "CT颈椎",
+            "lang": "Chinese",
+            "created": "2011-07-20 00:00:00",
+            "specialty": "Computed Tomography,Pediatric Radiology,Neuroradiology,Musculoskeletal Radiology",
+            "specCode": "CT,PD,NR,MK",
+            "TLAP_Approved": null
+        },
+        {
+            "id": "133",
+            "template_version": "e1c1b35e-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "BT Servikal Omurga",
+            "lang": "Turkish",
+            "created": "2011-07-26 00:00:00",
+            "specialty": "Computed Tomography,Pediatric Radiology,Neuroradiology,Musculoskeletal Radiology",
+            "specCode": "CT,PD,NR,MK",
+            "TLAP_Approved": null
+        },
+        {
+            "id": "134",
+            "template_version": "e1c1b723-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "US Torasentez (Ultrason)",
+            "lang": "Turkish",
+            "created": "2011-08-04 00:00:00",
+            "specialty": "Ultrasound,Chest Radiology,Interventional Radiology",
+            "specCode": "US,CH,IR",
+            "TLAP_Approved": null
+        }
+    ]
+}

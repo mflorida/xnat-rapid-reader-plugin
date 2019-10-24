@@ -1,0 +1,210 @@
+{
+    "about": {
+        "note": "This 'about' field is not in the output from radreport.org, but is included here for reference.",
+        "url": "https://phpapi.rsna.org/radreport/v1/templates?limit=20&page=10",
+        "url-note": "This is the url used to generate the included JSON. The results may vary depending on available templates."
+    },
+    "SUCCESS": true,
+    "DATA": [
+        {
+            "id": "50045",
+            "template_version": "e1c88afb-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Zatoki przynosowe",
+            "lang": "Polish",
+            "created": "2014-07-08 16:55:43",
+            "specialty": null,
+            "specCode": null,
+            "TLAP_Approved": null
+        },
+        {
+            "id": "50044",
+            "template_version": "e1c8887b-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "MR prawego stawu kolanowego",
+            "lang": "Polish",
+            "created": "2014-07-01 10:33:30",
+            "specialty": "Magnetic Resonance Imaging,Musculoskeletal Radiology",
+            "specCode": "MR,MK",
+            "TLAP_Approved": null
+        },
+        {
+            "id": "50043",
+            "template_version": "e1c88495-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "TK jamy brzusznej",
+            "lang": "Polish",
+            "created": "2014-07-01 10:26:00",
+            "specialty": "Computed Tomography,Gastrointestinal Radiology,Genitourinary Radiology",
+            "specCode": "CT,GI,GU",
+            "TLAP_Approved": null
+        },
+        {
+            "id": "50042",
+            "template_version": "e1c8822f-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "RTG czaszki",
+            "lang": "Polish",
+            "created": "2014-07-01 10:22:32",
+            "specialty": "Musculoskeletal Radiology,Neuroradiology",
+            "specCode": "MK,NR",
+            "TLAP_Approved": null
+        },
+        {
+            "id": "50041",
+            "template_version": "e1c87c2d-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "MR głowy",
+            "lang": "Polish",
+            "created": "2014-07-01 10:16:13",
+            "specialty": "Magnetic Resonance Imaging,Neuroradiology",
+            "specCode": "MR,NR",
+            "TLAP_Approved": null
+        },
+        {
+            "id": "50040",
+            "template_version": "e1c87725-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "TK mózgu",
+            "lang": "Polish",
+            "created": "2014-07-01 10:08:45",
+            "specialty": "Computed Tomography,Emergency Radiology,Neuroradiology",
+            "specCode": "CT,ER,NR",
+            "TLAP_Approved": null
+        },
+        {
+            "id": "50039",
+            "template_version": "e1c872ec-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Ogólny wynik badania (badanie diagnostyczne)",
+            "lang": "Polish",
+            "created": "2014-07-01 10:01:14",
+            "specialty": null,
+            "specCode": null,
+            "TLAP_Approved": null
+        },
+        {
+            "id": "50038",
+            "template_version": "e1c86db9-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "TK mózgu (perfuzja)",
+            "lang": "Polish",
+            "created": "2014-07-01 09:32:17",
+            "specialty": "Computed Tomography,Emergency Radiology,Neuroradiology",
+            "specCode": "CT,ER,NR",
+            "TLAP_Approved": null
+        },
+        {
+            "id": "298",
+            "template_version": "e1c802a1-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "US Early Pregnancy",
+            "lang": "English",
+            "created": "2014-04-30 00:00:00",
+            "specialty": "Ultrasound,Emergency Radiology,OB/GYN Radiology",
+            "specCode": "US,ER,OB",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "299",
+            "template_version": "e1c80859-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "MR Left Hip",
+            "lang": "English",
+            "created": "2014-04-30 00:00:00",
+            "specialty": "Magnetic Resonance Imaging,Musculoskeletal Radiology",
+            "specCode": "MR,MK",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "303",
+            "template_version": "e1c81924-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "MR Right Knee",
+            "lang": "English",
+            "created": "2014-04-30 00:00:00",
+            "specialty": "Magnetic Resonance Imaging,Musculoskeletal Radiology",
+            "specCode": "MR,MK",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "297",
+            "template_version": "e1c7fbe5-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Communication of Actionable Findings",
+            "lang": "English",
+            "created": "2014-04-06 00:00:00",
+            "specialty": "Quality Improvement,Emergency Radiology",
+            "specCode": "QI,ER",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "50036",
+            "template_version": "e1c868f9-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Echografie van de abdominale aorta",
+            "lang": "Dutch",
+            "created": "2014-03-28 10:29:47",
+            "specialty": "Ultrasound",
+            "specCode": "US",
+            "TLAP_Approved": null
+        },
+        {
+            "id": "294",
+            "template_version": "e1c601f6-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Thorax CT Lungenembolie",
+            "lang": "German",
+            "created": "2014-03-20 00:00:00",
+            "specialty": "Computed Tomography,Chest Radiology,Emergency Radiology,Vascular Imaging",
+            "specCode": "CT,CH,ER,VI",
+            "TLAP_Approved": null
+        },
+        {
+            "id": "295",
+            "template_version": "e1c60a66-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "CT-gesteuerte Drainagenanlage",
+            "lang": "German",
+            "created": "2014-03-20 00:00:00",
+            "specialty": "Computed Tomography,Interventional Radiology",
+            "specCode": "CT,IR",
+            "TLAP_Approved": null
+        },
+        {
+            "id": "287",
+            "template_version": "e1c5f317-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "US Kidney Biopsy Guidance",
+            "lang": "English",
+            "created": "2014-02-12 00:00:00",
+            "specialty": "Ultrasound,Genitourinary Radiology,Interventional Radiology",
+            "specCode": "US,GU,IR",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "288",
+            "template_version": "e1c5fb9a-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "US Liver Biopsy",
+            "lang": "English",
+            "created": "2014-02-12 00:00:00",
+            "specialty": "Ultrasound,Gastrointestinal Radiology,Interventional Radiology",
+            "specCode": "US,GI,IR",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "50034",
+            "template_version": "e1c8671b-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Colangiopancreatografia RM",
+            "lang": "Italian",
+            "created": "2014-02-10 13:16:03",
+            "specialty": "Gastrointestinal Radiology",
+            "specCode": "GI",
+            "TLAP_Approved": null
+        },
+        {
+            "id": "283",
+            "template_version": "e1c5d3b0-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "US Carotid Arteries (with Stenosis Calculator)",
+            "lang": "English",
+            "created": "2014-01-17 00:00:00",
+            "specialty": "Ultrasound,Vascular Imaging,Research",
+            "specCode": "US,VI,RS",
+            "TLAP_Approved": "1"
+        },
+        {
+            "id": "50031",
+            "template_version": "e1c85c53-814f-11e9-af35-0eaa5a9daa9c",
+            "title": "Nuclear Medicine Hepatobiliary (HIDA) Scan",
+            "lang": "English",
+            "created": "2013-12-30 14:16:07",
+            "specialty": "Nuclear Medicine",
+            "specCode": "NM",
+            "TLAP_Approved": "1"
+        }
+    ]
+}

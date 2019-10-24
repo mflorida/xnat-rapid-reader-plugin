@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>x0 Examples</title>
+    <script src="polyfills.js"></script>
+</head>
+<body>
+
+<div id="body-content">
+
+    <header class="header" data-your-stuff="my-stuff"><h1 class="h1"></h1></header>
+
+    <hr>
+
+    <div class="hipsum-html"></div>
+    <div class="hipsum-html"></div>
+    <div class="hipsum-html"></div>
+
+    <p id="hipsum-text" data-hipsum-text></p>
+
+    <p class="filler"></p>
+    <p class="filler"></p>
+    <p class="filler"></p>
+
+    <div data-more-filler>
+        <!-- 5 filler paragraphs will be generated here -->
+    </div>
+
+    <input data-foo="bar" type="hidden" name="hidden-input" value="this is hidden">
+
+    <hr>
+
+    <footer class="footer">
+        <small id="footer-text"></small>
+    </footer>
+
+</div>
+<!-- /#body-content -->
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"
+        integrity="sha256-VeNaFBVDhoX3H+gJ37DpT/nTuZTdjYro9yBruHjVmoQ="
+        crossorigin="anonymous"></script>
+
+<script src="x0.js"></script>
+<script src="x0.spawnElement.js"></script>
+<script src="x0.hipsum.js"></script>
+
+<script type="text/javascript">
+    (function(x0){
+
+        // $00('h1', $00('header')[0])[0].textContent = x0.hipsum.title(4);
+
+        x0('** header > h1').text(x0.hipsum.title(4));
+
+        x0('// footer > #footer-text').text(x0.hipsum.sentences(2, [7, 5]));
+
+        x0('..hipsum-html').html(function(){
+            return x0.hipsum.paragraphs(3, [2, 5, 9], [5, 10, 15]);
+        });
+
+        x0('#:hipsum-text').text(x0.hipsum.sentence);
+
+        // .exe() method executes callback function once with current instance as `this`
+        x0('@data-more-filler').exe(function(selected){
+            var i = -1;
+            while (++i < 5){
+                x0.spawnElement('p.filler', { container: selected[0] })
+            }
+        });
+
+        var _filler = x0('.|filler');
+        _filler.text(x0.hipsum.sentence);
+        console.log(_filler.all());
+
+    })(window.x0);
+</script>
+<script src="x0.tests.js"></script>
+<script>
+    (function(x0){
+        x0.DOM = {
+            id: {},
+            name: {},
+            className: {},
+            data: {},
+            uid: {}
+        };
+        // x0('@class').exe(function(el){
+        //     // window.elementsWithClass = window.elementsWithClass || {};
+        //     if (el.classList.length) {
+        //         x0.forEach(el.classList, function(cls){
+        //             x0.DOM.className[cls] = x0.DOM.className[cls] || [];
+        //             x0.DOM.className[cls].push(el);
+        //         });
+        //     }
+        // });
+        // x0('@name').exe(function(el){
+        //     if (el.name.length) {
+        //         x0.DOM.name[el.name] = x0.DOM.name[el.name] || [];
+        //         x0.DOM.name[el.name].push(el);
+        //     }
+        // });
+        // x0('@id').exe(function(el){
+        //     if (el.id.length) {
+        //         x0.DOM.id[el.id] = x0.DOM.id[el.id] || [];
+        //         x0.DOM.id[el.id].push(el);
+        //     }
+        // });
+
+        function cacheByAttr(attr, element){
+            var key = element[attr];
+            if (attr in element || element.hasAttribute(attr)) {
+                x0.DOM[attr] = x0.DOM[attr] || {};
+                x0.DOM[attr][key] = x0.DOM[attr][key] || [];
+                x0.DOM[attr][key].push(element);
+            }
+        }
+
+        // cache all elements on page load for SUPER fast selection
+        x0('//*').each(function(element){
+
+            // var UID = x0.uid();
+            //
+            // if (!element.uid) {
+            //     element.uid = UID
+            // }
+            // // cache elements by uid
+            // x0.DOM.uid[UID] = element;
+
+            // cache elements by className
+            if (element.className) {
+                x0.forEach(element.classList, function(className){
+                    cacheByAttr('className', element);
+                });
+            }
+
+            // cache elements by other common attributes
+            if (element.id) {
+                cacheByAttr('id', element);
+            }
+            if (element.name) {
+                cacheByAttr('name', element);
+            }
+            if (element.value) {
+                cacheByAttr('value', element);
+            }
+
+            var dataKey;
+            for (dataKey in element.dataset) {
+                if (!element.dataset.hasOwnProperty(dataKey)) {
+                    continue;
+                }
+                x0.DOM.data[dataKey] = x0.DOM.data[dataKey] || [];
+                x0.DOM.data[dataKey].push(element);
+            }
+
+            // x0.DOM[element.id] = {
+            //     tag: element.tagName.toLowerCase(),
+            //     tagName: element.tagName,
+            //     id: element.id || '',
+            //     classes: element.className || '',
+            //     attr: (function(){
+            //         var attrMap = {};
+            //         x0.forEach(element.attributes, function(attr){
+            //             attrMap[attr.name] = attr.value
+            //         });
+            //         return attrMap;
+            //     })(),
+            //     element: element
+            // }
+
+        });
+        console.log(x0.DOM);
+    })(window.x0);
+</script>
+</body>
+</html>

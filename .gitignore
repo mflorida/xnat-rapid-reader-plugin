@@ -1,0 +1,13 @@
+#*.iml
+#*.log
+#*.txt
+.gradle*
+#gradle
+#.idea
+#out
+#target
+#dep*.txt
+#.nb-gradle/
+build
+!/rapid-reader
+*--ignore

@@ -1,0 +1,73 @@
+{
+    "about": {
+        "note": "This 'about' field is not in the output from radreport.org, but is included here for reference.",
+        "url": "https://phpapi.rsna.org/radreport/v1/templates/101/details",
+        "url-note": "This is the url used to generate the included JSON. The results may vary depending on available templates."
+    },
+    "SUCCESS": true,
+    "DATA": {
+        "currentVersion": {
+            "created": "2009-12-01 00:00:00",
+            "template_version": "e1c1585f-814f-11e9-af35-0eaa5a9daa9c"
+        },
+        "prevVersions": [
+        ],
+        "id": "101",
+        "selectedVersion": "e1c1585f-814f-11e9-af35-0eaa5a9daa9c",
+        "title": "Bone Age",
+        "description": null,
+        "author": "Meyer JS, et al.",
+        "firstname": null,
+        "lastname": null,
+        "views": "1363",
+        "downloads": "1435",
+        "created": "2009-12-01 00:00:00",
+        "dataType": "html",
+        "reviewInProgress": null,
+        "templateData": "<!DOCTYPE html>\n<html>\n    <head>\n        <meta charset=\"UTF-8\" />\n        <meta content=\"Bone Age\" name=\"dcterms.title\" />\n        <meta content=\"Bone Age report template :: Authored by Meyer JS, et al.\" name=\"dcterms.description\" />\n        <meta content=\"http://www.radreport.org/template/0000101\" name=\"dcterms.identifier\" />\n        <meta content=\"en\" name=\"dcterms.language\" />\n        <meta content=\"IMAGE_REPORT_TEMPLATE\" name=\"dcterms.type\" />\n        <meta content=\"Radiological Society of North America (RSNA)\" name=\"dcterms.publisher\" />\n        <meta content=\"May be used gratis, subject to license agreement\" name=\"dcterms.rights\" />\n        <meta content=\"http://www.radreport.org/license.pdf\" name=\"dcterms.license\" />\n        <meta content=\"2013-12-08\" name=\"dcterms.date\" />\n        <meta content=\"Meyer JS, et al.\" name=\"dcterms.creator\" />\n        <meta content=\"Kahn CE Jr [editor]\" name=\"dcterms.contributor\" />\n        <meta content=\"Carr CD [editor]\" name=\"dcterms.contributor\" />\n        <meta content=\"Society for Pediatric Radiology (SPR)\" name=\"dcterms.contributor\" />\n        <link rel=\"stylesheet\" type=\"text/css\" href=\"IHE_Template_Style.css\" />\n\t\t<!-- The absolute link to the CSS file is http://www.radreport.org/html/IHE_Template_Style.css -->\n        <script type=\"text/xml\">\n            <!--\n            <template_attributes>\n                <top-level-flag>true</top-level-flag>\n                <status>ACTIVE</status>\n<coding_schemes>\n <coding_scheme name=\"RadLex\" designator=\"2.16.840.1.113883.6.256\" />\n <coding_scheme name=\"SNOMEDCT\" designator=\"2.16.840.1.113883.6.96\" />\n <coding_scheme name=\"LOINC\" designator=\"2.16.840.1.113883.6.1\" />\n</coding_schemes>\n                <term>\n <code meaning=\"bone organ\" value=\"RID13197\" scheme=\"RadLex\">\n</term>\n                <term>\n <code meaning=\"child\" value=\"RID5641\" scheme=\"RadLex\">\n</term>\n                <term>\n <code meaning=\"skeletal system\" value=\"RID13208\" scheme=\"RadLex\">\n</term>\n                <coded_content>\n<entry ORIGTXT=\"T101_2\">\n                         <term>\n  <code meaning=\"procedure\" value=\"RID1559\" scheme=\"RadLex\">\n </term>\n                    </entry>\n<entry ORIGTXT=\"T101_3\">\n                         <term>\n  <code meaning=\"left\" value=\"RID5824\" scheme=\"RadLex\">\n </term>\n                         <term>\n  <code meaning=\"hand\" value=\"RID2318\" scheme=\"RadLex\">\n </term>\n                    </entry>\n<entry ORIGTXT=\"T101_4\">\n                         <term>\n  <code meaning=\"right\" value=\"RID5825\" scheme=\"RadLex\">\n </term>\n                         <term>\n  <code meaning=\"hand\" value=\"RID2318\" scheme=\"RadLex\">\n </term>\n                    </entry>\n<entry ORIGTXT=\"T101_5\">\n                         <term>\n  <code meaning=\"clinical information\" value=\"RID13166\" scheme=\"RadLex\">\n </term>\n                    </entry>\n<entry ORIGTXT=\"T101_6\">\n                         <term>\n  <code meaning=\"comparison\" value=\"RID28483\" scheme=\"RadLex\">\n </term>\n                    </entry>\n<entry ORIGTXT=\"T101_8\">\n                         <term>\n  <code meaning=\"observations section\" value=\"RID28486\" scheme=\"RadLex\">\n </term>\n                    </entry>\n<entry ORIGTXT=\"T101_9\">\n                          <term>\n  <code meaning=\"Gender (observable entity)\" value=\"263495000\" scheme=\"SNOMEDCT\">\n </term>\n                    </entry>\n<entry ORIGTXT=\"T101_10\">\n                          <term>\n  <code meaning=\"Male (finding)\" value=\"248153007\" scheme=\"SNOMEDCT\">\n </term>\n                    </entry>\n<entry ORIGTXT=\"T101_11\">\n                          <term>\n  <code meaning=\"Female (finding)\" value=\"248152002\" scheme=\"SNOMEDCT\">\n </term>\n                    </entry>\n<entry ORIGTXT=\"T101_12\">\n                          <term>\n  <code meaning=\"Current chronological age (observable entity)\" value=\"424144002\" scheme=\"SNOMEDCT\">\n </term>\n                    </entry>\n<entry ORIGTXT=\"T101_21\">\n                         <term>\n  <code meaning=\"normal\" value=\"RID13173\" scheme=\"RadLex\">\n </term>\n                    </entry>\n</coded_content>\n            </template_attributes>\n            -->\n        </script>\n        <title>Bone Age</title>\n    </head>\n    <body>\n        <section data-section-name=\"Procedure\">\n            <header class=\"level1\">Procedure</header>\n            <p>\n                <select id=\"T101_2\" name=\"Procedure\">\n                    <option id=\"T101_3\" name=\"A single PA view of the left hand and wrist was\n                        obtained for determination of bone age.\" value=\"left\">A single PA view of the left hand and wrist was\n                        obtained for determination of bone age.</option>\n                    <option id=\"T101_4\" name=\"A single PA view of the right hand and wrist\n                        was obtained for determination of bone age. Note that the standards are\n                        based on left hand radiographs.\" value=\"right\">A single PA view of the right hand and wrist\n                        was obtained for determination of bone age. Note that the standards are\n                        based on left hand radiographs.</option>\n                </select>\n            </p>\n        </section>\n        <section data-section-name=\"Clinical information\">\n            <header class=\"level1\">Clinical information</header>\n            <p>\n                <textarea id=\"T101_5\" name=\"Clinical information\"></textarea>\n            </p>\n        </section>\n        <section data-section-name=\"Comparison\">\n            <header class=\"level1\">Comparison</header>\n            <p>\n                <textarea id=\"T101_6\" name=\"Comparison\" data-codedcontent-default-val=\"None\" data-codedcontent-default-ref=\"T101_7\" >None.</textarea>\n            </p>\n        </section>\n        <section data-section-name=\"Findings\">\n            <header class=\"level1\">Findings</header>\n            <p>\n                <label for=\"T101_9\">Sex:</label>\n                <select id=\"T101_9\" name=\"Sex\">\n                    <option id=\"T101_10\" name=\"Male\" value=\"Male\">Male</option>\n                    <option id=\"T101_11\" name=\"Female\" value=\"Female\">Female</option>\n                </select>\n            </p>\n            <p>\n                <label for=\"T101_12\">Chronological age:</label>\n                <input type=\"text\" id=\"T101_12\" name=\"Chronological age\" /> (years + months) \n            </p>\n            <p>\n                <label for=\"T101_15\">Bone age:</label>\n                <input type=\"text\" id=\"T101_15\" name=\"Bone age\" value=\"\" /> (years + months)\n            </p>\n            <p>\n                <label\n                    for=\"T101_18\">Standard deviation:</label>\n                <input type=\"number\" id=\"T101_18\" name=\"Standard deviation\" data-field-units=\"months\" min=\"\" max=\"\" /> months \n            </p>\n            <p><textarea id=\"T101_8\" cols=\"70\" rows=\"3\" name=\"Findings\"></textarea></p>\n        </section>\n        <section data-section-name=\"Impression\">\n            <header class=\"level1\">Impression</header>\n            <p>\n                <!-- <label for=\"T101_20\">Bone age</label> -->\n                <select id=\"T101_20\" name=\"Impression\">\n                    <option id=\"T101_21\" name=\"Normal\" value=\"Normal\">Normal bone age, within 2\n                        standard deviations of chronological age.</option>\n                    <option id=\"T101_22\" name=\"Advanced\" value=\"Advanced\">Advanced bone age, more\n                        than 2 standard deviations above chronological age.</option>\n                    <option id=\"T101_23\" name=\"Delayed\" value=\"Delayed\">Delayed bone age, more than\n                        2 standard deviations below chronological age.</option>\n                </select>\n            </p>\n        </section>\n    </body>\n</html>\n",
+        "englishName": "English",
+        "langCode": "en",
+        "favCount": "0",
+        "organizations": [
+            {
+                "id": "183",
+                "name": "Society for Pediatric Radiology",
+                "code": "SPR"
+            },
+            {
+                "id": "160",
+                "name": "Radiological Society of North America",
+                "code": "RSNA"
+            }
+        ],
+        "specialty": [
+            {
+                "code": "PD",
+                "name": "Pediatric Radiology"
+            },
+            {
+                "code": "MK",
+                "name": "Musculoskeletal Radiology"
+            }
+        ],
+        "coauthors": [
+        ],
+        "references": [
+        ],
+        "radlex": [
+            {
+                "id": "RID13208",
+                "prefLabel": "skeletal system"
+            },
+            {
+                "id": "RID5641",
+                "prefLabel": "child"
+            },
+            {
+                "id": "RID13197",
+                "prefLabel": "bone organ"
+            }
+        ],
+        "isFavorite": "0"
+    }
+}

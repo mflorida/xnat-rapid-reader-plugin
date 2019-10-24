@@ -1,0 +1,15 @@
+/**
+ CSS styles for radreport.org forms
+ */
+
+#form-template-wrapper {
+
+}
+
+#form-template-wrapper select {
+    max-width: 100%;
+}
+
+#form-template-wrapper textarea {
+    width: 100%;
+}

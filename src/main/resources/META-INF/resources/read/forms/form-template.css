@@ -1,0 +1,15 @@
+/**
+ CSS styles for radreport.org forms
+ */
+
+section[data-section-name] {
+
+}
+
+section[data-section-name] select {
+    max-width: 100%;
+}
+
+section[data-section-name] textarea {
+    width: 100%;
+}

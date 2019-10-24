@@ -1,0 +1,117 @@
+{
+
+    "Procedure": [
+        {
+            "id": "T101_2",
+            "name": "Procedure",
+            "label": "Procedure",
+            "value": "left",
+            "description": "A single PA view of the left hand and wrist was obtained for determination of bone age.",
+            "tag": "select",
+            "options": [
+                {
+                    "id": "T101_3",
+                    "name": "A single PA view of the left hand and wrist was obtained for determination of bone age.",
+                    "value": "left",
+                    "description": "A single PA view of the left hand and wrist was obtained for determination of bone age."
+                },
+                {
+                    "id": "T101_4",
+                    "name": "A single PA view of the right hand and wrist was obtained for determination of bone age. Note that the standards are based on left hand radiographs.",
+                    "value": "right",
+                    "description": "A single PA view of the right hand and wrist was obtained for determination of bone age. Note that the standards are based on left hand radiographs."
+                }
+            ]
+        }
+    ],
+
+    "Clinical information": [
+        {
+            "id": "T101_5",
+            "name": "Clinical information",
+            "label": "Clinical information",
+            "value": "",
+            "tag": "input"
+        }
+    ],
+
+    "Comparison": [
+        {
+            "id": "T101_6",
+            "name": "Comparison",
+            "value": "None."
+        }
+    ],
+
+    "Technique": [
+        {
+            "id": "T101_X1",
+            "name": "Technique",
+            "value": ""
+        }
+    ],
+
+    "Findings": [
+        {
+            "id": "T101_9",
+            "name": "Sex",
+            "label": "Sex",
+            "value": "Male",
+            "tag": "select",
+            "options": [
+                {
+                    "id": "T101_10",
+                    "name": "Male",
+                    "label": "Male",
+                    "value": "Male"
+                },
+                {
+                    "id": "T101_11",
+                    "name": "Female",
+                    "label": "Female",
+                    "value": "Female"
+                }
+            ]
+        },
+        {
+            "id": "T101_12",
+            "name": "Chronological age",
+            "label": "Chronological age",
+            "value": "11"
+        },
+        {
+            "id": "T101_15",
+            "name": "Bone age",
+            "label": "Bone age",
+            "value": "12"
+        },
+        {
+            "id": "T101_18",
+            "name": "Standard deviation",
+            "label": "Standard deviation",
+            "value": "12",
+            "tag": "input",
+            "type": "number",
+            "data": {
+                "fieldUnits": "months"
+            },
+            "attr": {
+                "min": "",
+                "max": ""
+            }
+        },
+        {
+            "id": "T101_8",
+            "name": "Findings",
+            "value": ""
+        }
+    ],
+
+    "Impression": [
+        {
+            "id": "T101_X2",
+            "name": "Impression",
+            "value": ""
+        }
+    ]
+}
