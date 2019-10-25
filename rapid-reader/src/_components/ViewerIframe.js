@@ -14,7 +14,7 @@ function ViewerIframe(props){
         const query  = [
             `projectId=${dataFields.project}`,
             `subjectId=${dataFields.xnat_subjectdata_subjectid}`,
-            `experimentId=${dataFields.session_id}`,
+            `experimentId=${dataFields.expt_id}`,
             `t=${Date.now()}`
         ];
         return `${server.siteUrl}/${VIEWER}/?${query.join('&')}`
@@ -24,7 +24,7 @@ function ViewerIframe(props){
     return (
 
         <div id="viewer-iframe" style={{ width: '70%', float: 'left' }}>
-            <iframe src={iframeSrc()} title={dataFields.session_id} width="100%" height="720" style={{ border: 'none' }}/>
+            <iframe src={iframeSrc()} title={dataFields.expt_id} width="100%" height="720" style={{ border: 'none' }}/>
         </div>
 
     );

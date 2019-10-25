@@ -1,7 +1,6 @@
 package org.nrg.xnatx.rapidReader;
 
 import org.nrg.framework.annotations.XnatPlugin;
-//import org.springframework.context.annotation.ComponentScan;
 
 @XnatPlugin(
         value = "rapidReaderPlugin",
@@ -10,10 +9,7 @@ import org.nrg.framework.annotations.XnatPlugin;
         description = "Simplified UI for performing rad reads.",
         openUrls = {"/read"}
 )
-//@ComponentScan({
-//        "org.nrg.xnatx.rapidReader.xapi",
-//        "org.nrg.xnatx.rapidReader.event.listeners"
-//})
+
 public class RapidReaderPlugin {
     // Only static HTML - no Java classes
 }

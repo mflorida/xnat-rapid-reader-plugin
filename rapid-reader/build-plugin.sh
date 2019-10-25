@@ -24,5 +24,5 @@ chmod -Rf +x ${PLUGIN_DIR}
 
 # run the gradle build
 cd ../
-./gradlew clean fatJar
+./gradlew clean slimJar
 cd - || exit

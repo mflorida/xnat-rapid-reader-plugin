@@ -49,11 +49,11 @@ function Worklist(props){
                             {/*<ViewSession exptList={response.data.ResultSet.Result}/>*/}
                             {/*<ul>*/}
                             {/*    {response.data.ResultSet.Result.map((item, idx) => (*/}
-                            {/*        <li key={`search-item-${item.session_id}`}>*/}
+                            {/*        <li key={`search-item-${item.expt_id}`}>*/}
                             {/*            <Link to={`/searches/${searchId}/${idx}`}>*/}
-                            {/*                {item.session_id}*/}
+                            {/*                {item.expt_id}*/}
                             {/*            </Link>*/}
-                            {/*            /!*<a href={`${server.siteUrl}/read/#/viewer/proj=${item.xnat_subjectdata_project}/subj=${item.xnat_subjectdata_subjectid}/expt=${item.session_id}/label=${item.label}`}>{item.label}</a>*!/*/}
+                            {/*            /!*<a href={`${server.siteUrl}/read/#/viewer/proj=${item.xnat_subjectdata_project}/subj=${item.xnat_subjectdata_subjectid}/expt=${item.expt_id}/label=${item.label}`}>{item.label}</a>*!/*/}
                             {/*        </li>*/}
                             {/*    ))}*/}
                             {/*</ul>*/}

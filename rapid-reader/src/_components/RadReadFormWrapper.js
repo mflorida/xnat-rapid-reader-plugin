@@ -10,7 +10,7 @@ export default function RadReadFormWrapper(props){
 
     const { itemData, templateId } = props;
 
-    const exptId = itemData.session_id;
+    const exptId = itemData.expt_id;
 
     const [templateResponse, templateRequest] = useRequest({
         url: `https://phpapi.rsna.org/radreport/v1/templates/${templateId}/details`,

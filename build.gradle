@@ -25,11 +25,13 @@ buildscript {
     }
 }
 
-group 'org.nrg.xnatx'
+group 'org.nrg.xnat.plugin'
 version '0.1.0-SNAPSHOT'
 
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'java'
+apply plugin: "maven"
+apply plugin: "maven-publish"
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 
@@ -40,25 +42,41 @@ idea {
     }
 }
 
-//task fatJar(type: Jar) {
-//    baseName = project.name
-//    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-//    with jar
-//}
+def buildDate = new Date()
+def buildNumber = System.getenv().BUILD_NUMBER?.toInteger() ?: "Manual"
+
+jar {
+    baseName "rapid-reader-plugin"
+    manifest {
+        attributes (
+            "Application-Name": "XNAT Rapid Reader Plugin",
+            "Build-Date": buildDate,
+            "Build-Number": buildNumber
+        )
+    }
+}
 
 task fatJar(type: Jar) {
-    baseName = project.name
-    //zip64 true
-    //classifier = "fat"
+    zip64 true
     // *--exclude files will only be excluded from the plugin build and included in committed code
-    exclude "/**/*--exclude**"
     // *--ignore files will be excluded from both the plugin build *and* committed code
+    exclude "/**/*--exclude**"
     exclude "/**/*--ignore**"
     from {
         configurations.compile.collect {
             it.isDirectory() ? it : zipTree(it)
         }
     }
+    with jar
+}
+
+task slimJar(type: Jar) {
+    // *--exclude files will only be excluded from the plugin build and included in committed code
+    // *--ignore files will be excluded from both the plugin build *and* committed code
+    exclude (
+        "/**/*--exclude**",
+        "/**/*--ignore**"
+    )
     with jar
 }
 
@@ -98,6 +116,7 @@ dependencyManagement.imports {
 }
 
 dependencies {
+
     implementation("org.nrg.xnat:web") {
         transitive = false
     }
@@ -123,7 +142,6 @@ dependencies {
         transitive = false
     }
 
-
     implementation "org.springframework:spring-web"
     implementation "org.springframework:spring-webmvc"
     implementation "org.springframework:spring-context"
@@ -133,6 +151,7 @@ dependencies {
     implementation "commons-io:commons-io"
     implementation "commons-codec:commons-codec"
     implementation "org.apache.commons:commons-lang3"
+
     compile group: 'io.projectreactor', name: 'reactor-core', version: '2.0.2.RELEASE'
     compile group: 'io.projectreactor', name: 'reactor-bus', version: '2.0.2.RELEASE'
     compile 'javax.inject:javax.inject:1'

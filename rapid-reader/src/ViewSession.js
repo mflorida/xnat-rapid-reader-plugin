@@ -18,7 +18,15 @@ function ViewSession(props){
 
     const [searchResponse, searchRequest] = useRequest({
         url: `${server.siteUrl}/data/search/saved/${searchId}/results?format=json&t=${Date.now()}`,
-        method: 'GET'
+        method: 'GET',
+        transformResponse: function(resp){
+            resp.data.ResultSet.Result = resp.data.ResultSet.Result.map(function(item){
+                item.session_id = item.session_id || item.expt_id;
+                item.expt_id = item.expt_id || item.session_id;
+                return item;
+            });
+            return resp;
+        }
     });
 
     let results  = null;
@@ -100,8 +108,7 @@ function ViewSession(props){
                 <section className="clearfix">
                     <div className="float-left">
                         <Link to="/worklists">
-                            <b><>&laquo;&nbsp;</>
-                                Worklists</b>
+                            <b><>&laquo;&nbsp;</>Worklists</b>
                         </Link>
                     </div>
                     <div className="float-right">
@@ -119,7 +126,7 @@ function ViewSession(props){
                         </tr>
                         <tr>
                             <td>Session ID: <>&nbsp;</></td>
-                            <td>{itemData.session_id}</td>
+                            <td>{itemData.expt_id}</td>
                         </tr>
                         <tr>
                             <td>Subject: <>&nbsp;</></td>
