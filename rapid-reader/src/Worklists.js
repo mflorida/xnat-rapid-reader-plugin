@@ -1,7 +1,7 @@
 import React from 'react';
 import { server } from './_config/server';
 import { useRequest } from './_helpers/useRequest';
-import LoadingSpinner from './_components/LoadingSpinner';
+import LoadingRequest from './_components/LoadingRequest';
 
 function Worklists(props){
 
@@ -48,7 +48,7 @@ function Worklists(props){
             <h1>Worklists</h1>
             {!response || !response.data ? (
 
-                <LoadingSpinner/>
+                <LoadingRequest/>
 
             ) : (
                 <div className="list-group">

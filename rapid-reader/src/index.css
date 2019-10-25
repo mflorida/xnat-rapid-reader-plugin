@@ -51,5 +51,11 @@ tr.even {
 }
 
 #app-wrapper {
-  margin: 20px;
+  margin: 0;
+}
+
+a[href], a[href]:hover,
+a.link, a.link:hover {
+  /*color: #00a4d9;*/
+  color: #00b7f2;
 }

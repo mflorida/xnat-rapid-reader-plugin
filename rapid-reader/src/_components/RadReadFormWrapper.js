@@ -27,6 +27,7 @@ export default function RadReadFormWrapper(props){
         return (
             <div
                 id="read-form-template"
+                style={{ padding: '10px' }}
                 dangerouslySetInnerHTML={{ __html: dompurify.sanitize(templateBody) }}
             />
         );
@@ -34,7 +35,7 @@ export default function RadReadFormWrapper(props){
 
     return (
 
-        <form id="form-template-wrapper" action="#!" style={{ margin: 20 }}>
+        <form id="form-template-wrapper" action="#!" style={{ paddingTop: '5px' }}>
 
             {templateResponse && templateResponse.data && <FormTemplate/>}
 

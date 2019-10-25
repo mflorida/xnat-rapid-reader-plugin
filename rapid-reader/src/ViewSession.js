@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { server } from './_config/server';
 import { useRequest } from './_helpers/useRequest';
 import RadReadFormWrapper from './_components/RadReadFormWrapper';
-import LoadingSpinner from './_components/LoadingSpinner';
+import LoadingRequest from './_components/LoadingRequest';
 import ViewerIframe from './_components/ViewerIframe';
 
 import './ViewSession.css';
@@ -19,13 +19,15 @@ function ViewSession(props){
     const [searchResponse, searchRequest] = useRequest({
         url: `${server.siteUrl}/data/search/saved/${searchId}/results?format=json&t=${Date.now()}`,
         method: 'GET',
-        transformResponse: function(resp){
-            resp.data.ResultSet.Result = resp.data.ResultSet.Result.map(function(item){
+        transformResponse: function(json){
+            let data = (typeof json === 'string') ? JSON.parse(json) : json;
+            data.ResultSet.Result = data.ResultSet.Result.map(function(item){
                 item.session_id = item.session_id || item.expt_id;
                 item.expt_id = item.expt_id || item.session_id;
                 return item;
             });
-            return resp;
+            console.log(data);
+            return data;
         }
     });
 
@@ -101,11 +103,22 @@ function ViewSession(props){
         const itemData = extractItem(data);
         console.log(itemData);
 
+        const headerStyle = {
+            width: '30%',
+            height: 160,
+            margin: 0,
+            padding: '0 10px',
+            position: 'fixed',
+            top: 0, right: 0,
+            background: '#000',
+            zIndex: 1
+        };
+
         return (
 
-            <header style={{ margin: '0 20px', lineHeight: 1.6, verticalAlign: 'middle' }}>
+            <header style={headerStyle}>
 
-                <section className="clearfix">
+                <section className="clearfix" style={{ padding: '0 10px', height: 40, lineHeight: '40px', verticalAlign: 'middle' }}>
                     <div className="float-left">
                         <Link to="/worklists">
                             <b><>&laquo;&nbsp;</>Worklists</b>
@@ -117,23 +130,23 @@ function ViewSession(props){
                     <div className="clearfix"/>
                 </section>
 
-                <section style={{ margin: '20px 0' }}>
-                    <table id="session-info-table" style={{ width: '100%' }}>
+                <section style={{ height: 120, margin: '0 10px', padding: '10px', borderBottom: '5px solid #303030', background: '#000' }}>
+                    <table id="session-info-table" style={{ width: '100%', height: '100%', fontSize: '13px', fontWeight: 'bold' }}>
                         <tbody style={{ border: 'none' }}>
                         <tr>
-                            <td>Session Label: <>&nbsp;</></td>
+                            <th>Session Label: <>&nbsp;</></th>
                             <td>{itemData.label}</td>
                         </tr>
                         <tr>
-                            <td>Session ID: <>&nbsp;</></td>
+                            <th>Session ID: <>&nbsp;</></th>
                             <td>{itemData.expt_id}</td>
                         </tr>
                         <tr>
-                            <td>Subject: <>&nbsp;</></td>
+                            <th>Subject: <>&nbsp;</></th>
                             <td>{itemData.xnat_subjectdata_subjectid}</td>
                         </tr>
                         <tr>
-                            <td>Project: <>&nbsp;</></td>
+                            <th>Project: <>&nbsp;</></th>
                             <td>{itemData.project}</td>
                         </tr>
                         </tbody>
@@ -145,10 +158,10 @@ function ViewSession(props){
     }
 
     return (
-        <div className="view-session" style={{ margin: 20 }}>
+        <div className="view-session" style={{ margin: 0 }}>
             {!searchResponse || !searchResponse.data ? (
 
-                <LoadingSpinner/>
+                <LoadingRequest req={searchRequest}/>
 
             ) : (
                 <>
@@ -167,11 +180,19 @@ function ViewSession(props){
                                     {/*    itemIndex={searchItemIndex}*/}
                                     {/*/>*/}
 
-                                    <div className="clearfix">
+                                    <div className="clearfix" >
 
                                         <ViewerIframe dataFields={extractItem(searchResponse.data)}/>
 
-                                        <div id="session-data" style={{ width: '30%', float: 'right' }}>
+                                        <div id="session-data" style={{
+                                            width: '30%',
+                                            position: 'absolute',
+                                            top: '160px',
+                                            right: 0,
+                                            bottom: 0,
+                                            overflowY: 'scroll',
+                                            padding: '0 10px'
+                                        }}>
                                             <div>
 
                                                 <ViewHeader
@@ -180,7 +201,7 @@ function ViewSession(props){
                                                 />
 
                                                 <RadReadFormWrapper itemData={extractItem(searchResponse.data)} templateId={templateId}>
-                                                    <section className="clearfix">
+                                                    <section className="clearfix" style={{ padding: '0 20px 30px' }}>
                                                         <SessionNavButton txt="prev" newIndex={searchItemIndex - 1}/>
                                                         <SessionNavButton txt="next" newIndex={searchItemIndex + 1}/>
                                                     </section>
