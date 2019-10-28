@@ -1,0 +1,19 @@
+<!-- Sequence: 20 -->
+<!-- allowGuest: false -->
+
+#* @vtlvariable name="content" type="org.apache.turbine.services.pull.tools.ContentTool" *#
+#* @vtlvariable name="data" type="org.apache.turbine.util.RunData" *#
+#* @vtlvariable name="displayManager" type="org.nrg.xdat.display.DisplayManager" *#
+#* @vtlvariable name="link" type="org.apache.turbine.services.pull.tools.TemplateLink" *#
+#* @vtlvariable name="siteConfig" type="org.nrg.xdat.preferences.SiteConfigPreferences" *#
+#* @vtlvariable name="userHelper" type="org.nrg.xdat.security.services.UserHelperServiceI" *#
+
+#set($userHelper = $data.getSession().getAttribute("userHelper"))
+
+<li class="hidden"><a href="#!" class="nolink">Rapid Read</a>
+    <ul id="rapid-read-menu">
+        <!-- Sequence: 50 -->
+    </ul>
+</li>
+
+<script src="$content.getURI("/scripts/plugins/rapid-reader/topnav-browse-read.js")"></script>
