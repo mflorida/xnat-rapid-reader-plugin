@@ -108,8 +108,8 @@
             radDataElement('impression'),
             // ['rad:impression', jsonString(data.impression)],
 
-            radElement('read_template', null, '000101'),
-            // ['rad:read_template', '000101'],
+            radElement('read_template', null, '1'),
+            // ['rad:read_template', '1'],
 
             radDataElement('other'),
             // ['rad:other', jsonString(data.other)],

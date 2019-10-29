@@ -20,7 +20,7 @@ cp -rf ${BUILD_DIR}/* ${PLUGIN_DIR}
 chmod -Rf +x ${PLUGIN_DIR}
 
 # uncomment the line below to skip the XNAT plugin build (useful for development)
-#exit;
+exit;
 
 # run the gradle build
 cd ../

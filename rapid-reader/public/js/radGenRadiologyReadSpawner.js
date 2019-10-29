@@ -29,14 +29,14 @@
             let prop    = keyMap[key];
             tmpObj[key] = element[prop];
         });
-        return JSON.stringify(tmpObj);
+        return JSON.stringify(tmpObj, null, 2);
     }
 
 
     function jsonString(it){
         if (it === '' || it === undefined) return '';
         return (x0.isArray(it) || x0.isPlainObject(it)) ?
-            JSON.stringify(it) :
+            JSON.stringify(it, null, 2) :
             (it + '');
     }
     
@@ -108,8 +108,8 @@
             radDataElement('impression'),
             // ['rad:impression', jsonString(data.impression)],
 
-            radElement('read_template', null, '000101'),
-            // ['rad:read_template', '000101'],
+            radElement('read_template', null, '1'),
+            // ['rad:read_template', '1'],
 
             radDataElement('other'),
             // ['rad:other', jsonString(data.other)],

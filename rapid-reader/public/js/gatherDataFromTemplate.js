@@ -8,7 +8,9 @@
         // quick access to data by template field id
         dataMap: {},
         // organized section data
-        sections: {}
+        sections: [],
+        // quick access to section by name
+        sectionMap: {}
     };
 
     var inputSelectors = [
@@ -21,9 +23,9 @@
     // get section data for each <section> element in template
     function gatherSectionData(container){
 
-        var sections = getElements('section[data-section-name]', container);
+        var dataSections = getElements('section[data-section-name]', container);
 
-        x0.forEach(sections, function(section, i){
+        x0.forEach(dataSections, function(section, i){
 
             var sectionName = section.getAttribute('data-section-name');
 
@@ -144,7 +146,8 @@
             });
 
             // add section data to the main data object
-            readData.sections[normalizedName] = sectionData;
+            readData.sections.push(sectionData);
+            readData.sectionMap[normalizedName] = sectionData.dataMap;
 
         });
 

@@ -58,6 +58,10 @@ function ViewSession(props){
         return extractResults(data).length;
     }
 
+    const [submitResponse, submitRequest] = useRequest({
+
+    })
+
     function SessionNavButton(props){
 
         const { txt, newIndex } = props;
@@ -65,6 +69,11 @@ function ViewSession(props){
         let text     = txt;
         let disabled = false;
         let linkTo   = `/worklists/${searchId}/${templateId}/${newIndex}/${searchItemsLength}`;
+
+        let handleSave = function(e){
+            console.log(e);
+            console.log('next...')
+        };
 
         const btnStyle = {
             width: '45%',
@@ -84,12 +93,16 @@ function ViewSession(props){
                 linkTo = '/worklists';
                 text   = 'Done';
             }
+            handleSave = function(e){
+                e.preventDefault();
+
+            }
         }
 
         return disabled ? (
             <button disabled style={btnStyle}>{text}</button>
         ) : (
-            <Link style={btnStyle} to={linkTo}>
+            <Link style={btnStyle} to={linkTo} onClick={handleSave}>
                 <button style={{ width: '100%' }}>{text}</button>
             </Link>
         );
