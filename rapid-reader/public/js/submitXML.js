@@ -50,15 +50,21 @@
 
     function submitXML(xmlUrl, xmlData, submitUrl, method){
 
-        console.log(xmlData);
+        window.jsdebug && console.log(xmlData);
 
         function doSubmit(XML){
-            return axios({
-                url: submitUrl,
-                method: method || 'POST',
-                data: XML,
-                headers: {'Content-Type': 'text/xml'}
-            }).then((response) => {
+
+            // handle config object instead of just the URL.
+            var cfg = isPlainObject(submitUrl) ? submitUrl : { url: submitUrl };
+
+            cfg.method = cfg.method || method || 'POST';
+            cfg.params = cfg.params || {};
+            cfg.headers = cfg.headers || {};
+            cfg.headers['Content-Type'] = cfg.headers['Content-Type'] || 'text/xml';
+
+            cfg.data = XML;
+
+            return axios(cfg).then((response) => {
                 console.log('submitXML');
                 console.log(response);
                 if (response.status === 200) {
@@ -96,7 +102,7 @@
 
         var formData = [].slice.call(form.elements).map((element, i) => {
             if (!element.className.contains('skip')) {
-                return  {
+                return {
                     fieldId: element.id,
                     name: element.name,
                     value: element.value,

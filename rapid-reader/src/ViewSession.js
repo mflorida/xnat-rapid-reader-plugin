@@ -66,6 +66,17 @@ function ViewSession(props){
     //
     // });
 
+    function parseSessionParam(){
+        const parts = window.readerConfig.server.info[2].split(/[/_.:$?=&+\-*]+/);
+        return [
+            parts[4] || 0,
+            parts[1] || 0,
+            parts[5] || 0,
+            parts[2] || 0,
+            parts[3] || 0
+        ].join('-')
+    }
+
     function SessionNavButton(props){
 
         const { txt, newIndex } = props;
@@ -117,14 +128,20 @@ function ViewSession(props){
                 // return false;
 
                 // submit the XML data as a new assessor
-                const submitXML = axios({
+                const postXML = axios({
                     method: 'POST',
-                    url: `${server.siteUrl}/data/projects/${itemData.project}/subjects/${itemData.subject}/experiments/${itemData.expt_id}/assessors?inbody=true`,
-                    contentType: 'text/xml',
+                    url: `${server.siteUrl}/data/projects/${itemData.project}/subjects/${itemData.subject}/experiments/${itemData.expt_id}/assessors`,
+                    params: {
+                        inbody: 'true',
+                        XNAT_CSRF: parseSessionParam()
+                    },
+                    headers: {
+                        'Content-Type': 'text/xml'
+                    },
                     data: xmlSpawn.xml
                 });
 
-                submitXML.then(function(resp){
+                postXML.then(function(resp){
                     if (resp.status === 200) {
                         console.log('SAVED!!!');
                         window.location.hash = `#${linkTo}`;
