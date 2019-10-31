@@ -7,7 +7,7 @@
     window.readerConfig = window.readerConfig || {};
 
     var _app     = '/read';
-    var _context = '/xnat';
+    var _context = window.siteRoot || '';
     var _host    = window.location.protocol + '//' + window.location.host;
 
     var server = {
@@ -20,6 +20,15 @@
         siteUrl: _host + _context,
         appUrl: _host + _context + _app
     };
+
+    server.info = window.sessionInfo || (function(){
+        var out = [];
+        var i = -1;
+        while (++i <= 4) {
+            out.push('')
+        }
+        return out;
+    })();
 
     window.readerConfig.server = server;
 
