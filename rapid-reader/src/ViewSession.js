@@ -5,6 +5,7 @@ import { useRequest } from './_helpers/useRequest';
 import RadReadFormWrapper from './_components/RadReadFormWrapper';
 import LoadingRequest from './_components/LoadingRequest';
 import ViewerIframe from './_components/ViewerIframe';
+import axios from 'axios';
 
 import './ViewSession.css';
 
@@ -31,17 +32,20 @@ function ViewSession(props){
         }
     });
 
-    let results  = null;
+    let results  = [];
     let itemData = null;
 
     function extractResults(data){
         console.log('extractResults');
-        return (results = data.ResultSet.Result);
+        return (results = (data && data.ResultSet && data.ResultSet.Result) ? data.ResultSet.Result : []);
     }
 
     function extractItem(data){
         console.log('extractItem');
-        return (itemData = extractResults(data)[searchItemIndex - 1]);
+        itemData = extractResults(data)[searchItemIndex - 1] || null;
+        itemData.expt_id = itemData.expt_id || itemData.session_id;
+        itemData.subject = itemData.subject || itemData.xnat_subjectdata_subjectid;
+        return itemData;
     }
 
     function storeData(){
@@ -58,9 +62,9 @@ function ViewSession(props){
         return extractResults(data).length;
     }
 
-    const [submitResponse, submitRequest] = useRequest({
-
-    })
+    // const [submitResponse, submitRequest] = useRequest({
+    //
+    // });
 
     function SessionNavButton(props){
 
@@ -94,7 +98,41 @@ function ViewSession(props){
                 text   = 'Done';
             }
             handleSave = function(e){
+
                 e.preventDefault();
+
+                console.log('link...');
+                console.log(linkTo);
+
+                // collect the form data
+                const formData = window.radreportFormData.collect('#session-data');
+
+                console.log(formData);
+
+                // convert to XML using the 'standard' elements for generic rad read data type
+                const xmlSpawn = window.genRadReadSpawnXML(formData.sectionMap);
+
+                console.log(xmlSpawn.xml);
+
+                // return false;
+
+                // submit the XML data as a new assessor
+                const submitXML = axios({
+                    method: 'POST',
+                    url: `${server.siteUrl}/data/projects/${itemData.project}/subjects/${itemData.subject}/experiments/${itemData.expt_id}/assessors?inbody=true`,
+                    contentType: 'text/xml',
+                    data: xmlSpawn.xml
+                });
+
+                submitXML.then(function(resp){
+                    if (resp.status === 200) {
+                        console.log('SAVED!!!');
+                        window.location.hash = `#${linkTo}`;
+                    }
+                    else {
+                        console.warn('error')
+                    }
+                });
 
             }
         }
@@ -156,7 +194,7 @@ function ViewSession(props){
                         </tr>
                         <tr>
                             <th>Subject: <>&nbsp;</></th>
-                            <td>{itemData.xnat_subjectdata_subjectid}</td>
+                            <td>{itemData.subject}</td>
                         </tr>
                         <tr>
                             <th>Project: <>&nbsp;</></th>
@@ -187,6 +225,7 @@ function ViewSession(props){
                             ) : (
                                 <>
                                     {storeData()}
+                                    {extractItem(searchResponse.data) && null}
 
                                     {/*<ViewHeader*/}
                                     {/*    data={searchResponse.data}*/}
@@ -195,7 +234,7 @@ function ViewSession(props){
 
                                     <div className="clearfix" >
 
-                                        <ViewerIframe dataFields={extractItem(searchResponse.data)}/>
+                                        <ViewerIframe dataFields={itemData}/>
 
                                         <div id="session-data" style={{
                                             width: '30%',
@@ -213,7 +252,7 @@ function ViewSession(props){
                                                     itemIndex={searchItemIndex}
                                                 />
 
-                                                <RadReadFormWrapper itemData={extractItem(searchResponse.data)} templateId={templateId}>
+                                                <RadReadFormWrapper itemData={itemData} templateId={templateId}>
                                                     <section className="clearfix" style={{ padding: '0 20px 30px' }}>
                                                         <SessionNavButton txt="prev" newIndex={searchItemIndex - 1}/>
                                                         <SessionNavButton txt="next" newIndex={searchItemIndex + 1}/>
@@ -222,7 +261,7 @@ function ViewSession(props){
 
                                                 <table style={{ display: 'none' }}>
                                                     <tbody>
-                                                    {(itemData = extractItem(searchResponse.data)) && Object.keys(itemData).sort().map((key, i) => {
+                                                    {Object.keys(itemData).sort().map((key, i) => {
                                                         const val = itemData[key];
                                                         return (
                                                             <tr className={(i % 2) ? 'even' : 'odd'}>

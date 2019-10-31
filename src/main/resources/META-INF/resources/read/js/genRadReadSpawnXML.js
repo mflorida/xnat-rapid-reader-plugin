@@ -1,7 +1,7 @@
 (function(window){
 
     var x0 = window.x0;
-    
+
     var server = window.readerConfig.server;
 
     function schemaLocation(){
@@ -29,36 +29,52 @@
             let prop    = keyMap[key];
             tmpObj[key] = element[prop];
         });
-        return JSON.stringify(tmpObj, null, 2);
+        return JSON.stringify(tmpObj);
     }
 
 
     function jsonString(it){
         if (it === '' || it === undefined) return '';
         return (x0.isArray(it) || x0.isPlainObject(it)) ?
-            JSON.stringify(it, null, 2) :
+            JSON.stringify(it) :
             (it + '');
     }
-    
-    
+
+
     function rootAttrs(data){
-        return {
-            'xmlns:wrk': "http://nrg.wustl.edu/workflow",
-            'xmlns:scr': "http://nrg.wustl.edu/scr",
-            'xmlns:rad': "http://nrg.wustl.edu/rad",
-            'xmlns:xnat': "http://nrg.wustl.edu/xnat",
-            'xmlns:xsi': "http://www.w3.org/2001/XMLSchema-instance",
-            'project': data.projectId || '',
-            'xsi:schemaLocation': schemaLocation()
+
+        var projAttr = (data.project || data.projectId || window.projectId) ?
+            data.project || data.projectId || window.projectId :
+            '';
+
+        var attrs = {
+            'xmlns:wrk': 'http://nrg.wustl.edu/workflow',
+            'xmlns:scr': 'http://nrg.wustl.edu/scr',
+            'xmlns:rad': 'http://nrg.wustl.edu/rad',
+            'xmlns:xnat': 'http://nrg.wustl.edu/xnat',
+            'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance'
+        };
+
+        if (projAttr) {
+            attrs.project = projAttr;
         }
+
+        attrs['xsi:schemaLocation'] = schemaLocation();
+
+        return attrs;
+
     }
 
 
     // main Spawner function
     function genRadReadSpawnXML(data){
 
+        data = data || {};
+
+        data.other = data.other || {};
+
         function templateElement(tag, attr, content){
-            return [tag, attr, content]
+            return [tag, attr, content];
         }
 
         function radElement(name, attr, value){
@@ -66,18 +82,18 @@
                 'rad:' + x0.toUnderscore(name),
                 attr ? attr : null,
                 value || ''
-            )
+            );
         }
 
-        function radDataElement(name, attr) {
-            return radElement(name, attr || null, jsonString(data[name]) || '')
+        function radDataElement(name, attr){
+            return radElement(name, attr || null, jsonString(data[name]) || '');
         }
 
         var xmlHeader = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
 
         var spawned = x0.spawnXML('rad:GenRadiologyRead', rootAttrs(data), [
 
-            templateElement('xnat:imageSession_ID', null, data.exptId),
+            templateElement('xnat:imageSession_ID', null, data.expt_id),
             // ['xnat:imageSession_ID', data.exptId],
 
             radElement('modality', null, data.modality),
@@ -111,12 +127,24 @@
             radElement('read_template', null, '1'),
             // ['rad:read_template', '1'],
 
-            radDataElement('other'),
+            radElement('other', null, jsonString((function(itemData){
+
+                var other = itemData.other || {};
+
+                other.project  = (other.project || itemData.project || '');
+                other.subject  = (other.subject || itemData.subject || '');
+                other.expt_id  = (other.expt_id || itemData.expt_id || itemData.exptId || itemData.imageSessionId || itemData.imageSession_ID || '');
+                other.modality = (other.modality || itemData.modality || '');
+                other.reader   = (other.reader || itemData.reader || itemData.username || itemData.user || '');
+
+                return other;
+
+            })(data))),
             // ['rad:other', jsonString(data.other)],
 
             ''
         ]);
-        
+
         var spawnedXML = [xmlHeader, spawned].join('\n');
 
         return {
@@ -128,7 +156,7 @@
             get: function(){
                 return spawnedXML;
             }
-        }
+        };
     }
 
     window.genRadReadSpawnXML = genRadReadSpawnXML;

@@ -1,7 +1,11 @@
+/**
+ * Collect and populate form data using 'TLAP Endorsed'
+ * form templates available on radreport.org.
+ */
+
 (function(window){
 
-    // localize x0 main function/methods
-    var x0 = window.x0;
+    window.radreportFormData = window.radreportFormData || {};
 
     // object to hold collected data
     var readData = {
@@ -21,11 +25,11 @@
 
 
     // get section data for each <section> element in template
-    function gatherSectionData(container){
+    function collect(container){
 
         var dataSections = getElements('section[data-section-name]', container);
 
-        x0.forEach(dataSections, function(section, i){
+        dataSections.forEach(function(section, i){
 
             var sectionName = section.getAttribute('data-section-name');
 
@@ -42,7 +46,7 @@
             }
             else {
                 // convert to lowercase underscored names
-                normalizedName = x0.toUnderscore(sectionName);
+                normalizedName = underscoreString(sectionName);
             }
 
             // if there's a <header> element, use that as the section label
@@ -63,7 +67,7 @@
 
             var inputs = getElements(inputSelectors.join(','), section);
 
-            x0.forEach(inputs, function(input, i){
+            inputs.forEach(function(input, i){
 
                 var itemData = {};
 
@@ -88,10 +92,12 @@
                 // add extra attributes to the '$attr' object
                 itemData.$attr = {};
 
-                var itemAttrs = x0(input).attr();
+                var itemAttrs = itemsToArray(input.getAttributeNames());
 
                 // iterate through the element's attributes, then normalize and save as a new object
-                x0.forOwn(itemAttrs, function(attrName, attrValue){
+                itemAttrs.forEach(function(attrName, i){
+
+                    var attrValue = input.getAttribute(attrName);
 
                     // // make sure property name is lowercase (?)
                     // attrName = attrName.toLowerCase();
@@ -121,7 +127,7 @@
                 });
 
                 // transform 'name' to underscored string for the key
-                itemData.key = x0.toUnderscore(itemData.name);
+                itemData.key = underscoreString(itemData.name);
 
                 // make sure we have a VALUE defined!!!
                 itemData.value = input.value || itemData.value || '';
@@ -154,16 +160,118 @@
         return readData;
 
     }
-    window.gatherSectionData = gatherSectionData;
+    window.radreportFormData.collect = collect;
 
 
     // fill in html template fields with stored data
-    function populateSectionFields(container){
+    function populate(container, data){
+
+        var formData      = maybeJSON(data);
+        var dataArray     = Array.isArray(formData) ? formData : [];
+        var formContainer = getElement(container);
+        var form          = (/FORM/i.test(formContainer.nodeName) ? formContainer : getElement('form', container));
+        var sections      = getElements('section[data-section-name]', form);
+        var inputs        = getElements('input[name], input[id], select, textarea', form);
+
+        // save all data by id, regardless of 'section'
+        var dataMap       = {};
+
+        // convert formData object to an array
+        if (isPlainObject(formData)) {
+            dataArray = Object.keys(formData).map(function(key){
+
+                var dataItem = {};
+                var dataValue = maybeJSON(formData[key]);
+
+                dataItem.key = key;
+                dataItem.id  = dataItem.id || key;
+                dataItem[key] = dataValue;
+
+                // save to dataMap before return
+                if (isPlainObject(maybeJSON(dataValue))) {
+                    Object.keys(dataValue).forEach(function(dataKey){
+                        dataMap[dataKey] = dataValue[dataKey].value || '';
+                    })
+                }
+
+                return dataItem;
+            });
+        }
+
+        window.jsdebug && console.log(dataArray);
+
+        // iterate the form elements instead of the data
+        (inputs).forEach(function(input){
+            var key = input.id || input.name;
+            var value = '';
+            // skip buttons and inputs without names or ids
+            if (key) {
+                value = dataMap[key];
+                if (/SELECT/i.test(input.nodeName)) {
+                    selectOption(input, value);
+                }
+                else {
+                    input.value = value;
+                }
+            }
+        });
+
+        // dataArray.forEach(function(dataItem, i){
+        //
+        //     var fieldInput = inputs[dataItem.id] || inputs[dataItem.name];
+        //     var fieldValue = dataItem.value;
+        //
+        //     if (/SELECT/i.test(fieldInput.nodeName)) {
+        //         selectOption(fieldInput, fieldValue);
+        //     }
+        //     else {
+        //         fieldInput.value = fieldValue;
+        //     }
+        //
+        // });
+
+        return [form, inputs, formData, inputs];
 
     }
+    window.radreportFormData.populate = populate;
+
+
+
 
 
     // utility functions
+
+    function probablyJSON(it){
+        return /string/i.test(typeof it) && /^[{[]/.test((it + '').trim());
+    }
+
+    function maybeJSON(it){
+        return probablyJSON(it) ? JSON.parse(it) : it;
+    }
+
+    function selectOption(select, value){
+        itemsToArray(select.options).forEach(function(option, i){
+            option.selected = (option.value === (value + ''));
+        });
+    }
+
+    function itemsToArray(items){
+        return Array.isArray(items) ?
+            items :
+            typeof items !== 'string' && 'length' in items ?
+                Array.prototype.slice.call(items) :
+                [items];
+    }
+
+    // convert all characters that aren't letters or numbers
+    // to underscores and trim any leading or trailing underscores
+    function underscoreString(name){
+        return (name || '').replace(/[^a-z0-9]/gi, '_')
+                           .replace(/_+/g, '_')
+                           .replace(/^_+|_+$/g, '')
+                           .toLowerCase();
+    }
+
     function resolveContext(context){
         var parent = document;
         if (context) {
@@ -182,7 +290,19 @@
     }
 
     function getElements(selector, context){
-        return resolveContext(context).querySelectorAll(selector);
+        var selected = resolveContext(context).querySelectorAll(selector);
+        console.log(selected);
+        return itemsToArray(selected);
     }
+    window.radreportFormData.getElements = getElements;
+
+    function isPlainObject(it){
+        return Object.prototype.toString.call(it) === '[object Object]';
+    }
+
+
+
+    return window.radreportFormData;
+
 
 })(this);

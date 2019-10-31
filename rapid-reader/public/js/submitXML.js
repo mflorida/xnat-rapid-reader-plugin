@@ -56,7 +56,8 @@
             return axios({
                 url: submitUrl,
                 method: method || 'POST',
-                data: XML
+                data: XML,
+                headers: {'Content-Type': 'text/xml'}
             }).then((response) => {
                 console.log('submitXML');
                 console.log(response);
