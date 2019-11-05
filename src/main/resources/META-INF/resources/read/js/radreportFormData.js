@@ -166,7 +166,7 @@
     // fill in html template fields with stored data
     function populate(container, data){
 
-        var formData      = maybeJSON(data);
+        var formData      = possiblyJSON(data);
         var dataArray     = Array.isArray(formData) ? formData : [];
         var formContainer = getElement(container);
         var form          = (/FORM/i.test(formContainer.nodeName) ? formContainer : getElement('form', container));
@@ -181,14 +181,14 @@
             dataArray = Object.keys(formData).map(function(key){
 
                 var dataItem = {};
-                var dataValue = maybeJSON(formData[key]);
+                var dataValue = possiblyJSON(formData[key]);
 
                 dataItem.key = key;
                 dataItem.id  = dataItem.id || key;
                 dataItem[key] = dataValue;
 
                 // save to dataMap before return
-                if (isPlainObject(maybeJSON(dataValue))) {
+                if (isPlainObject(possiblyJSON(dataValue))) {
                     Object.keys(dataValue).forEach(function(dataKey){
                         dataMap[dataKey] = dataValue[dataKey].value || '';
                     })
@@ -245,8 +245,8 @@
         return /string/i.test(typeof it) && /^[{[]/.test((it + '').trim());
     }
 
-    function maybeJSON(it){
-        return probablyJSON(it) ? JSON.parse(it) : it;
+    function possiblyJSON(it){
+        return it && probablyJSON(it) ? JSON.parse(it) : it || '';
     }
 
     function selectOption(select, value){

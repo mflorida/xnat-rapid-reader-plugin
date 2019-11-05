@@ -21,13 +21,17 @@ function ViewSession(props){
         url: `${server.siteUrl}/data/search/saved/${searchId}/results?format=json&t=${Date.now()}`,
         method: 'GET',
         transformResponse: function(json){
+
             let data = (typeof json === 'string') ? JSON.parse(json) : json;
+
             data.ResultSet.Result = data.ResultSet.Result.map(function(item){
                 item.session_id = item.session_id || item.expt_id;
-                item.expt_id = item.expt_id || item.session_id;
+                item.expt_id    = item.expt_id || item.session_id;
                 return item;
             });
+
             console.log(data);
+            
             return data;
         }
     });
@@ -42,7 +46,7 @@ function ViewSession(props){
 
     function extractItem(data){
         console.log('extractItem');
-        itemData = extractResults(data)[searchItemIndex - 1] || null;
+        itemData         = extractResults(data)[searchItemIndex - 1] || null;
         itemData.expt_id = itemData.expt_id || itemData.session_id;
         itemData.subject = itemData.subject || itemData.xnat_subjectdata_subjectid;
         return itemData;
@@ -77,6 +81,71 @@ function ViewSession(props){
         ].join('-')
     }
 
+    function SaveButton(props){
+
+        const { newIndex } = props;
+
+        let nextItem = (newIndex <= searchItemsLength) ?
+            `/worklists/${searchId}/${templateId}/${newIndex}/${searchItemsLength}` :
+            '/worklists';
+
+        const btnStyle = {
+            width: '100%',
+            lineHeight: 1.6
+        };
+
+        function handleSave(e){
+
+            e.preventDefault();
+
+            console.log('link...');
+            console.log(nextItem);
+
+            // collect the form data
+            const formData = window.radreportFormData.collect('#session-data');
+
+            console.log(formData);
+
+            // convert to XML using the 'standard' elements for generic rad read data type
+            const xmlSpawn = window.genRadReadSpawnXML(formData.sectionMap);
+
+            console.log(xmlSpawn.xml);
+
+            // return false;
+
+            // submit the XML data as a new assessor
+            const postXML = axios({
+                method: 'POST',
+                url: `${server.siteUrl}/data/projects/${itemData.project}/subjects/${itemData.subject}/experiments/${itemData.expt_id}/assessors`,
+                params: {
+                    inbody: 'true',
+                    XNAT_CSRF: parseSessionParam()
+                },
+                headers: {
+                    'Content-Type': 'text/xml'
+                },
+                data: xmlSpawn.xml
+            });
+
+            postXML.then(function(resp){
+                if (resp.status === 200) {
+                    console.log('SAVED!!!');
+                    window.location.hash = `#${nextItem}`;
+                }
+                else {
+                    console.warn('error')
+                }
+            });
+
+        }
+
+        return (
+            <Link style={btnStyle} to={nextItem} onClick={handleSave}>
+                <button style={{ width: '100%' }}>Save and Continue</button>
+            </Link>
+        )
+    }
+
     function SessionNavButton(props){
 
         const { txt, newIndex } = props;
@@ -85,79 +154,30 @@ function ViewSession(props){
         let disabled = false;
         let linkTo   = `/worklists/${searchId}/${templateId}/${newIndex}/${searchItemsLength}`;
 
-        let handleSave = function(e){
-            console.log(e);
-            console.log('next...')
-        };
-
         const btnStyle = {
             width: '45%',
             lineHeight: 1.6
         };
 
-        if (txt === 'prev') {
+        if (/prev/i.test(txt)) {
             disabled       = newIndex <= 0;
             text           = (<>&laquo; Back</>);
             btnStyle.float = 'left';
         }
         else {
             // disabled       = newIndex > searchItemsLength;
-            text           = (<>Save &raquo;</>);
+            text           = (<>Skip &raquo;</>);
             btnStyle.float = 'right';
             if (newIndex > searchItemsLength) {
                 linkTo = '/worklists';
                 text   = 'Done';
-            }
-            handleSave = function(e){
-
-                e.preventDefault();
-
-                console.log('link...');
-                console.log(linkTo);
-
-                // collect the form data
-                const formData = window.radreportFormData.collect('#session-data');
-
-                console.log(formData);
-
-                // convert to XML using the 'standard' elements for generic rad read data type
-                const xmlSpawn = window.genRadReadSpawnXML(formData.sectionMap);
-
-                console.log(xmlSpawn.xml);
-
-                // return false;
-
-                // submit the XML data as a new assessor
-                const postXML = axios({
-                    method: 'POST',
-                    url: `${server.siteUrl}/data/projects/${itemData.project}/subjects/${itemData.subject}/experiments/${itemData.expt_id}/assessors`,
-                    params: {
-                        inbody: 'true',
-                        XNAT_CSRF: parseSessionParam()
-                    },
-                    headers: {
-                        'Content-Type': 'text/xml'
-                    },
-                    data: xmlSpawn.xml
-                });
-
-                postXML.then(function(resp){
-                    if (resp.status === 200) {
-                        console.log('SAVED!!!');
-                        window.location.hash = `#${linkTo}`;
-                    }
-                    else {
-                        console.warn('error')
-                    }
-                });
-
             }
         }
 
         return disabled ? (
             <button disabled style={btnStyle}>{text}</button>
         ) : (
-            <Link style={btnStyle} to={linkTo} onClick={handleSave}>
+            <Link style={btnStyle} to={linkTo}>
                 <button style={{ width: '100%' }}>{text}</button>
             </Link>
         );
@@ -249,7 +269,7 @@ function ViewSession(props){
                                     {/*    itemIndex={searchItemIndex}*/}
                                     {/*/>*/}
 
-                                    <div className="clearfix" >
+                                    <div className="clearfix">
 
                                         <ViewerIframe dataFields={itemData}/>
 
@@ -273,6 +293,9 @@ function ViewSession(props){
                                                     <section className="clearfix" style={{ padding: '0 20px 30px' }}>
                                                         <SessionNavButton txt="prev" newIndex={searchItemIndex - 1}/>
                                                         <SessionNavButton txt="next" newIndex={searchItemIndex + 1}/>
+                                                        <div className="clearfix"/>
+                                                        <br/>
+                                                        <SaveButton newIndex={searchItemIndex + 1}/>
                                                     </section>
                                                 </RadReadFormWrapper>
 
