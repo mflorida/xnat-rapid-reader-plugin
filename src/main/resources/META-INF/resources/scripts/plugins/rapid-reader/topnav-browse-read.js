@@ -129,6 +129,7 @@
                             name: LABEL,
                             item: spawn('a',{
                                 href: URL,
+                                attr: { target: '_blank' },
                                 style: { width: '100%' }
                             }, escapeHtml(LABEL) )
                         })
