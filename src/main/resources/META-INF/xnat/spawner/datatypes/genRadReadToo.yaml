@@ -1,0 +1,94 @@
+root:
+    "?xml":
+        -version: 1.0
+        -encoding: UTF-8
+        -standalone: yes
+    xs:schema:
+        -targetNamespace: http://nrg.wustl.edu/read
+        -xmlns:xs: http://www.w3.org/2001/XMLSchema
+        -xmlns:xdat: http://nrg.wustl.edu/xdat
+        -xmlns:xnat: http://nrg.wustl.edu/xnat
+        -xmlns:rad: http://nrg.wustl.edu/rad
+        -elementFormDefault: qualified
+        -attributeFormDefault: unqualified
+        xs:import:
+            -namespace: http://nrg.wustl.edu/xnat
+            -schemaLocation: ../xnat/xnat.xsd
+        xs:element:
+            -name: GenRadiologyRead
+            -type: rad:genRadiologyReadData
+        xs:complexType:
+            -name: genRadiologyReadData
+            xs:complexContent:
+                xs:extension:
+                    -base: xnat:imageAssessorData
+                    xs:sequence:
+
+                        xs:element:
+                            -
+                                -name: modality
+                                -minOccurs: 0
+                                xs:simpleType:
+                                    xs:restriction:
+                                        -base: xs:string
+                                        xs:maxLength:
+                                            -value: 20
+                            -
+                                -name: reader
+                                -minOccurs: 0
+                                xs:simpleType:
+                                    xs:restriction:
+                                        -base: xs:string
+                                        xs:maxLength:
+                                            -value: 1000
+                            -
+                                -name: technique
+                                -minOccurs: 0
+                                xs:simpleType:
+                                    xs:restriction:
+                                        -base: xs:string
+                                        xs:maxLength:
+                                            -value: 10000
+                            -
+                                -name: findings
+                                xs:annotation:
+                                    xs:appinfo:
+                                        xdat:field:
+                                            -size: 100000
+                                xs:complexType:
+                                    xs:simpleContent:
+                                        xs:extension:
+                                            -base: xs:string
+                                            xs:attribute:
+                                                -name: normal_status
+                                                -type: xs:boolean
+                            -
+                                -name: diagnosis
+                                -minOccurs: 0
+                                xs:simpleType:
+                                    xs:restriction:
+                                        -base: xs:string
+                                        xs:maxLength:
+                                            -value: 100000
+                            -
+                                -name: impression
+                                -minOccurs: 0
+                                xs:simpleType:
+                                    xs:restriction:
+                                        -base: xs:string
+                                        xs:maxLength:
+                                            -value: 100000
+                            -
+                                -name: other
+                                -minOccurs: 0
+                                xs:simpleType:
+                                    xs:restriction:
+                                        -base: xs:string
+                            -
+                                -name: read_template
+                                -minOccurs: 0
+                                xs:simpleType:
+                                    xs:restriction:
+                                        -base: xs:string
+                                        xs:maxLength:
+                                            -value: 100000

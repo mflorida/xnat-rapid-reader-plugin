@@ -10,4 +10,4 @@
 #.nb-gradle/
 build
 !/rapid-reader
-*--ignore
+*--ignore*

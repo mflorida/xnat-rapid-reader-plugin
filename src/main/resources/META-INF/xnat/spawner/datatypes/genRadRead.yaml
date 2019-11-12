@@ -1,0 +1,138 @@
+root:
+    xml:
+        _version: 1.0
+        _encoding: UTF-8
+        _standalone: yes
+    xs:schema:
+        _targetNamespace: http://nrg.wustl.edu/read
+        _xmlns:xs: http://www.w3.org/2001/XMLSchema
+        _xmlns:xdat: http://nrg.wustl.edu/xdat
+        _xmlns:xnat: http://nrg.wustl.edu/xnat
+        _xmlns:rad: http://nrg.wustl.edu/rad
+        _elementFormDefault: qualified
+        _attributeFormDefault: unqualified
+        xs:import:
+            _namespace: http://nrg.wustl.edu/xnat
+            _schemaLocation: ../xnat/xnat.xsd
+        xs:element:
+            _name: GenRadiologyRead
+            _type: rad:genRadiologyReadData
+        xs:complexType:
+            _name: genRadiologyReadData
+            xs:complexContent:
+                xs:extension:
+                    _base: xnat:imageAssessorData
+                    xs:sequence:
+
+                        xs:element|name=modality|minOccurs=0:
+                            xs:simpleType:
+                                xs:restriction|base=xs:string:
+                                    xs:maxLength|value=20: null
+
+                        xs:element|name=reader|minOccurs=0:
+                            xs:simpleType:
+                                xs:restriction|base=xs:string:
+                                    xs:maxLength|value=1000: null
+
+                        xs:element|name=technique|minOccurs=0:
+                            xs:simpleType:
+                                xs:restriction|base=xs:string:
+                                    xs:maxLength|value=100000: null
+
+                        xs:element|name=findings|minOccurs=0:
+                            xs:annotation:
+                                xs:appinfo:
+                                    xdat:field|size=100000: null
+                            xs:complexType:
+                                xs:simpleContent:
+                                    xs:extension|base=xs:string:
+                                        xs:attribute|name=normal_status|type=xs:boolean: null
+
+                        xs:element|name=diagnosis|minOccurs=0:
+                            xs:simpleType:
+                                xs:restriction|base=xs:string:
+                                    xs:maxLength|value=100000: null
+
+                        xs:element|name=impression|minOccurs=0:
+                            xs:simpleType:
+                                xs:restriction|base=xs:string:
+                                    xs:maxLength|value=100000: null
+
+                        xs:element|name=other|minOccurs=0:
+                            xs:simpleType:
+                                xs:restriction|base=xs:string:
+                                    xs:maxLength|value=100000: null
+
+                        xs:element|name=read_template|minOccurs=0:
+                            xs:simpleType:
+                                xs:restriction|base=xs:string:
+                                    xs:maxLength|value=1000: null
+
+                        xs:element:
+                            -
+                                _name: modality
+                                _minOccurs: 0
+                                xs:simpleType:
+                                    xs:restriction:
+                                        _base: xs:string
+                                        xs:maxLength:
+                                            _value: 20
+                            -
+                                _name: reader
+                                _minOccurs: 0
+                                xs:simpleType:
+                                    xs:restriction:
+                                        _base: xs:string
+                                        xs:maxLength:
+                                            _value: 1000
+                            -
+                                _name: technique
+                                _minOccurs: 0
+                                xs:simpleType:
+                                    xs:restriction:
+                                        _base: xs:string
+                                        xs:maxLength:
+                                            _value: 10000
+                            -
+                                _name: findings
+                                xs:annotation:
+                                    xs:appinfo:
+                                        xdat:field:
+                                            _size: 100000
+                                xs:complexType:
+                                    xs:simpleContent:
+                                        xs:extension:
+                                            _base: xs:string
+                                            xs:attribute:
+                                                _name: normal_status
+                                                _type: xs:boolean
+                            -
+                                _name: diagnosis
+                                _minOccurs: 0
+                                xs:simpleType:
+                                    xs:restriction:
+                                        _base: xs:string
+                                        xs:maxLength:
+                                            _value: 100000
+                            -
+                                _name: impression
+                                _minOccurs: 0
+                                xs:simpleType:
+                                    xs:restriction:
+                                        _base: xs:string
+                                        xs:maxLength:
+                                            _value: 100000
+                            -
+                                _name: other
+                                _minOccurs: 0
+                                xs:simpleType:
+                                    xs:restriction:
+                                        _base: xs:string
+                            -
+                                _name: read_template
+                                _minOccurs: 0
+                                xs:simpleType:
+                                    xs:restriction:
+                                        _base: xs:string
+                                        xs:maxLength:
+                                            _value: 100000

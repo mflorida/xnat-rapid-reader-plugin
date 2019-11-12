@@ -20,10 +20,10 @@ function Worklist(props){
     );
 
     // URL for this page
-    // http://10.100.100.17/read/#/worklists/xs1566791876575
+    // {SITE}/read/#/worklists/xs1566791876575
 
     // URL for data
-    // http://10.100.100.17/data/search/saved/xs1566791876575/results?format=json&t=1568745242774
+    // {SITE}/data/search/saved/xs1566791876575/results?format=json&t=1568745242774
 
     function resultCount(data){
         console.log('resultCount');
