@@ -22,7 +22,7 @@ function ViewerIframe(props){
 
     // pull this out for easier editing
     const viewerContainerStyle = {
-        width: '70%',
+        width: '75%',
         position: 'fixed',
         top: 0,
         right: 0,

@@ -192,7 +192,7 @@ function ViewSession(props){
         console.log(itemData);
 
         const headerStyle = {
-            width: '30%',
+            width: '25%',
             height: 160,
             margin: 0,
             padding: '0 10px',
@@ -274,7 +274,7 @@ function ViewSession(props){
                                         <ViewerIframe dataFields={itemData}/>
 
                                         <div id="session-data" style={{
-                                            width: '30%',
+                                            width: '25%',
                                             position: 'absolute',
                                             top: '160px',
                                             right: 0,

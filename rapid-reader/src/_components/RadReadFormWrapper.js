@@ -11,12 +11,22 @@ export default function RadReadFormWrapper(props){
 
     const { itemData, templateId } = props;
 
-    const exptId = itemData.expt_id;
+    // omit template id from worklist or use '-' (hyphen) or '0' to be explicit about not using a template
+    const useForm = templateId && !/^[-0]$/.test(templateId);
+
+    // prefix template id with an underscore to use a locally-stored template - store in /public/forms
+    const localForm = templateId.charAt(0) === '_';
+
+    const templateUrl = localForm ?
+        `${server.appUrl}/forms/${templateId}.html` :
+        `https://phpapi.rsna.org/radreport/v1/templates/${templateId}/details`;
 
     const [templateResponse, templateRequest] = useRequest({
-        url: `https://phpapi.rsna.org/radreport/v1/templates/${templateId}/details`,
+        url: templateUrl,
         method: 'GET'
     }, templateId);
+
+    const exptId = itemData.expt_id;
 
     // const [dataResponse, dataRequest] = useRequest({
     //     url: `${server.siteUrl}/data/`,
@@ -24,7 +34,8 @@ export default function RadReadFormWrapper(props){
     // }, exptId);
 
     function FormTemplate(){
-        const templateBody = templateResponse.data.DATA.templateData.split('<body>')[1].split('</body>')[0];
+        const templateHTML = templateResponse.data.DATA.templateData;
+        const templateBody = /<body>/.test(templateHTML) ? templateHTML.split('<body>')[1].split('</body>')[0] : templateHTML;
         return (
             <div
                 id="read-form-template"
@@ -68,7 +79,7 @@ export default function RadReadFormWrapper(props){
 
         <form id="form-template-wrapper" action="#!" style={{ paddingTop: '5px' }}>
 
-            {templateResponse && templateResponse.data && <FormTemplate/>}
+            {useForm && templateResponse && templateResponse.data && <FormTemplate/>}
 
             <br/>
 
@@ -81,12 +92,7 @@ export default function RadReadFormWrapper(props){
 
             {props.children}
 
-            {/*<section className="clearfix">*/}
-            {/*    <SessionNavButton txt="prev" newIndex={itemIndex - 1}/>*/}
-            {/*    <SessionNavButton txt="next" newIndex={itemIndex + 1}/>*/}
-            {/*</section>*/}
-
-            {populateForm(templateResponse && templateResponse.data) && ''}
+            {useForm && populateForm(templateResponse && templateResponse.data) && ''}
 
         </form>
 
