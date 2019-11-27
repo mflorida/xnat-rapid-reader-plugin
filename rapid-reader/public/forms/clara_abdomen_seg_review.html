@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>clara_abdomen_seg_review</title>
+    <meta charset="UTF-8"/>
+    <meta name="dcterms.identifier" content="648f499a-2e18-47fe-9384-041d93a253b6"/>
+    <meta name="dcterms.title" content="clara_abdomen_seg_review"/>
+    <meta name="dcterms.description" content="Manual Assessment for CLARA Abdomen Segementations"/>
+    <meta name="dcterms.type" content="IMAGE_REPORT_TEMPLATE"/>
+    <meta name="dcterms.language" content="en"/>
+    <meta name="dcterms.publisher" content=""/>
+    <meta name="dcterms.rights" content="May be used freely, subject to license agreement"/>
+    <meta name="dcterms.license" content="http://www.radreport.org/license.pdf"/>
+    <meta name="dcterms.date" content="2019-11-27"/>
+    <meta name="dcterms.creator" content="Mark M. Florida"/>
+    <script type="text/xml">
+        <template_attributes>
+            <coded_content>
+                <coding_schemes>
+                    <coding_scheme name="RADLEX" designator="2.16.840.1.113883.6.256"></coding_scheme>
+                    <coding_scheme name="LOINC" designator="2.16.840.1.113883.6.1"></coding_scheme>
+                </coding_schemes>
+                <entry origtxt="findings">
+                    <term>
+                        <code meaning="Procedure Findings" value="59776-5" scheme="LOINC"></code>
+                    </term>
+                </entry>
+                <entry origtxt="procedureInformation">
+                    <term>
+                        <code meaning="Current Imaging Procedure Description" value="55111-9" scheme="LOINC"></code>
+                    </term>
+                </entry>
+                <entry origtxt="comparisons">
+                    <term>
+                        <code meaning="Radiology Comparison Study" value="18834-2" scheme="LOINC"></code>
+                    </term>
+                </entry>
+                <entry origtxt="impression">
+                    <term>
+                        <code meaning="Impressions" value="19005-8" scheme="LOINC"></code>
+                    </term>
+                </entry>
+                <entry origtxt="clinicalInformation">
+                    <term>
+                        <code meaning="Clinical Information" value="55752-0" scheme="LOINC"></code>
+                    </term>
+                </entry>
+            </coded_content>
+        </template_attributes>
+    </script>
+</head>
+<body>
+<!--
+<section id="procedureInformation" class="level1" data-section-name="Procedure Information">
+    <header class="level1">
+        Procedure Information
+    </header>
+</section>
+<section id="clinicalInformation" class="level1" data-section-name="Clinical Information">
+    <header class="level1">
+        Clinical Information
+    </header>
+</section>
+<section id="comparisons" class="level1" data-section-name="Comparison">
+    <header class="level1">
+        Comparison
+    </header>
+</section>
+-->
+<style>
+    select[data-field-type="SELECTION_LIST"] {
+        min-width: 50%;
+    }
+
+    section.level1 {
+
+    }
+
+    section.level2 {
+        padding: 0 10px;
+    }
+
+    section.level2 header {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+</style>
+<section id="findings" class="level1" data-section-name="Findings">
+    <header class="level1" style="display:none;">
+        Findings
+    </header>
+
+    <section id="SECTION_HEADER_1574885963349" class="level2">
+        <header class="level2">
+            Segmentation Accuracy
+        </header>
+        <p>
+            <label for="SELECTION_LIST_1574885963351">Liver</label>
+            <select id="SELECTION_LIST_1574885963351" name="" data-field-type="SELECTION_LIST" data-field-completion-action="NONE">
+                <option id="SELECTION_LIST_1574885963351_0" value="1" name="SELECTION_LIST_1574885963351">1</option>
+                <option id="SELECTION_LIST_1574885963351_1" value="2" name="SELECTION_LIST_1574885963351">2</option>
+                <option id="SELECTION_LIST_1574885963351_2" value="3" name="SELECTION_LIST_1574885963351">3</option>
+                <option id="SELECTION_LIST_1574885963351_3" value="4" name="SELECTION_LIST_1574885963351">4</option>
+                <option id="SELECTION_LIST_1574885963351_4" value="5" name="SELECTION_LIST_1574885963351" selected>5</option>
+            </select>
+        </p>
+        <p>
+            <label for="SELECTION_LIST_1574885963357">Spleen</label>
+            <select id="SELECTION_LIST_1574885963357" name="" data-field-type="SELECTION_LIST" data-field-completion-action="NONE">
+                <option id="SELECTION_LIST_1574885963357_0" value="1" name="SELECTION_LIST_1574885963357">1</option>
+                <option id="SELECTION_LIST_1574885963357_1" value="2" name="SELECTION_LIST_1574885963357">2</option>
+                <option id="SELECTION_LIST_1574885963357_2" value="3" name="SELECTION_LIST_1574885963357">3</option>
+                <option id="SELECTION_LIST_1574885963357_3" value="4" name="SELECTION_LIST_1574885963357">4</option>
+                <option id="SELECTION_LIST_1574885963357_4" value="5" name="SELECTION_LIST_1574885963357" selected="">5</option>
+            </select>
+        </p>
+
+    </section>
+
+    <section id="SECTION_HEADER_1574885963373" class="level2">
+        <header class="level2">
+            Overall Segmentation Scale
+        </header>
+        <p>
+            <label for="SELECTION_LIST_1574885963377">Right Kidney</label>
+            <select id="SELECTION_LIST_1574885963377" name="" data-field-type="SELECTION_LIST" data-field-completion-action="NONE">
+                <option id="SELECTION_LIST_1574885963377_0" value="1" name="SELECTION_LIST_1574885963377">1</option>
+                <option id="SELECTION_LIST_1574885963377_1" value="2" name="SELECTION_LIST_1574885963377">2</option>
+                <option id="SELECTION_LIST_1574885963377_2" value="3" name="SELECTION_LIST_1574885963377">3</option>
+                <option id="SELECTION_LIST_1574885963377_3" value="4" name="SELECTION_LIST_1574885963377">4</option>
+                <option id="SELECTION_LIST_1574885963377_4" value="5" name="SELECTION_LIST_1574885963377" selected>5</option>
+            </select>
+        </p>
+        <p>
+            <label for="SELECTION_LIST_1574885963388">Left Kidney</label>
+            <select id="SELECTION_LIST_1574885963388" name="" data-field-type="SELECTION_LIST" data-field-completion-action="NONE">
+                <option id="SELECTION_LIST_1574885963388_0" value="1" name="SELECTION_LIST_1574885963388">1</option>
+                <option id="SELECTION_LIST_1574885963388_1" value="2" name="SELECTION_LIST_1574885963388">2</option>
+                <option id="SELECTION_LIST_1574885963388_2" value="3" name="SELECTION_LIST_1574885963388">3</option>
+                <option id="SELECTION_LIST_1574885963388_3" value="4" name="SELECTION_LIST_1574885963388">4</option>
+                <option id="SELECTION_LIST_1574885963388_4" value="5" name="SELECTION_LIST_1574885963388" selected>5</option>
+            </select>
+        </p>
+        <p>
+            <label for="SELECTION_LIST_1574885963394">Gall Bladder</label>
+            <select id="SELECTION_LIST_1574885963394" name="" data-field-type="SELECTION_LIST" data-field-completion-action="NONE">
+                <option id="SELECTION_LIST_1574885963394_0" value="1" name="SELECTION_LIST_1574885963394">1</option>
+                <option id="SELECTION_LIST_1574885963394_1" value="2" name="SELECTION_LIST_1574885963394">2</option>
+                <option id="SELECTION_LIST_1574885963394_2" value="3" name="SELECTION_LIST_1574885963394">3</option>
+                <option id="SELECTION_LIST_1574885963394_3" value="4" name="SELECTION_LIST_1574885963394">4</option>
+                <option id="SELECTION_LIST_1574885963394_4" value="5" name="SELECTION_LIST_1574885963394" selected>5</option>
+            </select>
+        </p>
+        <p>
+            <label for="SELECTION_LIST_1574885963400">Esophagus</label>
+            <select id="SELECTION_LIST_1574885963400" name="" data-field-type="SELECTION_LIST" data-field-completion-action="NONE">
+                <option id="SELECTION_LIST_1574885963400_0" value="1" name="SELECTION_LIST_1574885963400">1</option>
+                <option id="SELECTION_LIST_1574885963400_1" value="2" name="SELECTION_LIST_1574885963400">2</option>
+                <option id="SELECTION_LIST_1574885963400_2" value="3" name="SELECTION_LIST_1574885963400">3</option>
+                <option id="SELECTION_LIST_1574885963400_3" value="4" name="SELECTION_LIST_1574885963400">4</option>
+                <option id="SELECTION_LIST_1574885963400_4" value="5" name="SELECTION_LIST_1574885963400" selected>5</option>
+            </select>
+        </p>
+        <p>
+            <label for="SELECTION_LIST_1574885963406">Stomach</label>
+            <select id="SELECTION_LIST_1574885963406" name="" data-field-type="SELECTION_LIST" data-field-completion-action="NONE">
+                <option id="SELECTION_LIST_1574885963406_0" value="1" name="SELECTION_LIST_1574885963406">1</option>
+                <option id="SELECTION_LIST_1574885963406_1" value="2" name="SELECTION_LIST_1574885963406">2</option>
+                <option id="SELECTION_LIST_1574885963406_2" value="3" name="SELECTION_LIST_1574885963406">3</option>
+                <option id="SELECTION_LIST_1574885963406_3" value="4" name="SELECTION_LIST_1574885963406">4</option>
+                <option id="SELECTION_LIST_1574885963406_4" value="5" name="SELECTION_LIST_1574885963406" selected>5</option>
+            </select>
+        </p>
+        <p>
+            <label for="SELECTION_LIST_1574885963412">Pancreas</label>
+            <select id="SELECTION_LIST_1574885963412" name="" data-field-type="SELECTION_LIST" data-field-completion-action="NONE">
+                <option id="SELECTION_LIST_1574885963412_0" value="1" name="SELECTION_LIST_1574885963412">1</option>
+                <option id="SELECTION_LIST_1574885963412_1" value="2" name="SELECTION_LIST_1574885963412">2</option>
+                <option id="SELECTION_LIST_1574885963412_2" value="3" name="SELECTION_LIST_1574885963412">3</option>
+                <option id="SELECTION_LIST_1574885963412_3" value="4" name="SELECTION_LIST_1574885963412">4</option>
+                <option id="SELECTION_LIST_1574885963412_4" value="5" name="SELECTION_LIST_1574885963412" selected>5</option>
+            </select>
+        </p>
+        <p>
+            <label for="SELECTION_LIST_1574885963418">Duodenum</label>
+            <select id="SELECTION_LIST_1574885963418" name="" data-field-type="SELECTION_LIST" data-field-completion-action="NONE">
+                <option id="SELECTION_LIST_1574885963418_0" value="1" name="SELECTION_LIST_1574885963418">1</option>
+                <option id="SELECTION_LIST_1574885963418_1" value="2" name="SELECTION_LIST_1574885963418">2</option>
+                <option id="SELECTION_LIST_1574885963418_2" value="3" name="SELECTION_LIST_1574885963418">3</option>
+                <option id="SELECTION_LIST_1574885963418_3" value="4" name="SELECTION_LIST_1574885963418">4</option>
+                <option id="SELECTION_LIST_1574885963418_4" value="5" name="SELECTION_LIST_1574885963418" selected>5</option>
+            </select>
+        </p>
+    </section>
+
+    <section id="other-notes" class="level2">
+        <header class="level2">
+            Notes
+        </header>
+        <p>
+            <label>
+                <textarea rows="3" cols="100" id="other-notes-text" name="" data-field-type="TEXTAREA" data-field-completion-action="NONE"></textarea>
+            </label>
+        </p>
+    </section>
+
+</section>
+</body>
+</html>

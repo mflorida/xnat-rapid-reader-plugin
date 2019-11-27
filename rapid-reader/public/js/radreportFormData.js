@@ -7,6 +7,8 @@
 
     window.radreportFormData = window.radreportFormData || {};
 
+    var undef;
+
     // object to hold collected data
     var readData = {
         // quick access to data by template field id
@@ -206,8 +208,8 @@
             var value = '';
             // skip buttons and inputs without names or ids
             if (key) {
-                value = dataMap[key];
-                if (/SELECT/i.test(input.nodeName)) {
+                value = dataMap[key] !== undef ? dataMap[key] : '';
+                if (value && /SELECT/i.test(input.nodeName)) {
                     selectOption(input, value);
                 }
                 else {
@@ -242,7 +244,7 @@
     // utility functions
 
     function probablyJSON(it){
-        return /string/i.test(typeof it) && /^[{[]/.test((it + '').trim());
+        return /string/i.test(typeof it) && /^[{[]/.test((it).trim());
     }
 
     function possiblyJSON(it){

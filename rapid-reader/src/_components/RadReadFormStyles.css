@@ -7,6 +7,22 @@
     font-size: 0.9rem;
 }
 
+#form-template-wrapper section.level2 {
+    margin-bottom: 30px;
+    padding: 0 10px;
+}
+
+#form-template-wrapper section.level2 header {
+    font-weight: bold;
+    margin: 10px 0;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #303030;
+}
+
+#form-template-wrapper section.level2 p {
+    padding: 0 10px;
+}
+
 #form-template-wrapper section[data-section-name] {
     margin-bottom: 20px;
     padding: 6px 10px;
@@ -26,6 +42,7 @@
 }
 
 #form-template-wrapper section[data-section-name] select {
+    min-width: 50%;
     max-width: 100%;
 }
 

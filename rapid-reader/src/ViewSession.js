@@ -149,7 +149,7 @@ function ViewSession(props){
 
         return (
             <Link style={btnStyle} to={nextItem} onClick={handleSave}>
-                <button style={{ width: '100%' }}>Save and {isLast ? 'Finish' : 'Continue'}</button>
+                <button className="btn btn-primary" style={{ width: '100%' }}>Save and {isLast ? 'Finish' : 'Continue'}</button>
             </Link>
         )
     }
