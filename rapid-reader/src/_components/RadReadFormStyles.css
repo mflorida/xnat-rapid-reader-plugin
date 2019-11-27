@@ -3,7 +3,8 @@
  */
 
 #form-template-wrapper {
- /* [*L*] */
+    /* [*L*] */
+    font-size: 0.9rem;
 }
 
 #form-template-wrapper section[data-section-name] {
@@ -20,7 +21,7 @@
 #form-template-wrapper section[data-section-name] > header:first-of-type {
     margin-bottom: 10px;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.0rem;
     border-bottom: 1px solid #505050;
 }
 
@@ -28,7 +29,8 @@
     max-width: 100%;
 }
 
-#form-template-wrapper section[data-section-name] textarea {
+#form-template-wrapper section[data-section-name] textarea,
+#form-template-wrapper section[data-section-name] input[type="text"] {
     width: 100%;
 }
 

@@ -23,13 +23,45 @@
 
     server.info = window.sessionInfo || (function(){
         var out = [];
-        var i = -1;
+        var i   = -1;
         while (++i <= 4) {
-            out.push('')
+            out.push('');
         }
         return out;
     })();
 
+    var viewer = {
+        // toolbar tools to hide when the Rapid Reader viewer loads
+        hideTools: [
+            'toggleCineDialog',
+            'wwwc',
+            'pan',
+            'Annotations',
+            'Freehand',
+            'Brush',
+            'delete',
+            'toggleMore',
+            'aiaaAnnotate',
+            'aiaaSegment'
+        ],
+        hidePanels: [
+            // ['.selector', 'class-to-remove']
+            ['.sidebarMenu.sidebar-left', 'sidebar-open'],
+            ['.sidebarMenu.sidebar-right', 'sidebar-open'],
+        ],
+        removeElements: [
+            '.roundedButtonWrapper[data-value="changeSession"]'
+        ]
+    };
+
+    viewer.hideSelectors = viewer.hideTools.map(function(id){
+        return `#${id}.toolbarSectionButton`;
+    });
+
+    // viewer.hideSelectors.push('[data-value="changeSession"]');
+
+    // 'export' these globally
     window.readerConfig.server = server;
+    window.readerConfig.viewer = viewer;
 
 })();

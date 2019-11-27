@@ -16,24 +16,26 @@ export function useRequest(opts, toWatch){
 
     const doRequest = function(){
 
-        const req = axios(opts);
+        if (opts.url) {
 
-        setRequest(req);
+            const req = axios(opts);
 
-        req.then((resp) => {
-            setResponse(resp);
-            console.log('useRequest:response');
-            console.log(resp);
-            return resp;
-        });
+            setRequest(req);
 
-        // return req;
+            req.then((resp) => {
+                setResponse(resp);
+                console.log('useRequest:response');
+                console.log(resp);
+                return resp;
+            });
+
+        }
 
     };
 
     useEffect(() => {
         doRequest();
-    }, toWatch ? [toWatch] : []);
+    }, toWatch ? [].concat(toWatch) : []);
 
     return [response, request];
 

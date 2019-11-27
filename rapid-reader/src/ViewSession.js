@@ -15,6 +15,12 @@ function ViewSession(props){
 
     const templateId = props.match.params.templateId;
 
+    // omit template id from worklist or use '-' (hyphen) or '0' to be explicit about not using a template
+    const useForm = templateId && !/^[-0]$/.test(templateId);
+
+    // prefix template id with '*' to use a locally-stored template - store in /public/forms
+    // const localForm = templateId.charAt(0) === '*';
+
     searchItemIndex = (+searchItemIndex);
 
     const [searchResponse, searchRequest] = useRequest({
@@ -85,7 +91,9 @@ function ViewSession(props){
 
         const { newIndex } = props;
 
-        let nextItem = (newIndex <= searchItemsLength) ?
+        const isLast = (newIndex > searchItemsLength);
+
+        let nextItem = !isLast ?
             `/worklists/${searchId}/${templateId}/${newIndex}/${searchItemsLength}` :
             '/worklists';
 
@@ -141,7 +149,7 @@ function ViewSession(props){
 
         return (
             <Link style={btnStyle} to={nextItem} onClick={handleSave}>
-                <button style={{ width: '100%' }}>Save and Continue</button>
+                <button style={{ width: '100%' }}>Save and {isLast ? 'Finish' : 'Continue'}</button>
             </Link>
         )
     }
@@ -295,7 +303,7 @@ function ViewSession(props){
                                                         <SessionNavButton txt="next" newIndex={searchItemIndex + 1}/>
                                                         <div className="clearfix"/>
                                                         <br/>
-                                                        <SaveButton newIndex={searchItemIndex + 1}/>
+                                                        {useForm && <SaveButton itemIndex={searchItemIndex} newIndex={searchItemIndex + 1}/>}
                                                     </section>
                                                 </RadReadFormWrapper>
 

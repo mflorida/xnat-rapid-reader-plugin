@@ -1,0 +1,67 @@
+{
+    "ResultSet": {
+        "Result": [
+            {
+                "allow_diff_columns": "1",
+                "stored_search_info": "5",
+                "extension": "93",
+                "sort_by_field_id": "",
+                "brief_description": "Read | DAN_QR_DEMO2 MR | 45",
+                "description": "",
+                "layeredsequence": "",
+                "secure": "1",
+                "users": "{mflorida}",
+                "root_element_name": "xnat:mrSessionData",
+                "id": "xs1572062816174",
+                "tag": "",
+                "sort_by_element_name": ""
+            },
+            {
+                "allow_diff_columns": "1",
+                "stored_search_info": "7",
+                "extension": "93",
+                "sort_by_field_id": "",
+                "brief_description": "Read | Abdominal CT Worklist | 50122",
+                "description": "Rapid Reader Worklist\r\nTemplate Source: radreport.org,\r\nTemplate ID: 50122,\r\nTemplate Title: CT Abdomen &amp; Pelvis,\r\nTemplate URL: ~/data/projects/AbCTSeg/resources/4664/files/Thoraxfoto.html\r\n",
+                "layeredsequence": "",
+                "secure": "1",
+                "users": "{aaronm,dan2,mckay,kelsem,hortonw,danAdmin,bob,smoore,mflorida}",
+                "root_element_name": "xnat:ctSessionData",
+                "id": "xs1574810986563",
+                "tag": "",
+                "sort_by_element_name": ""
+            },
+            {
+                "allow_diff_columns": "1",
+                "stored_search_info": "1",
+                "extension": "93",
+                "sort_by_field_id": "",
+                "brief_description": "Read | HV Demo 1 | 50525",
+                "description": "Rapid Read worklist using template #50525.  https://radreport.org/home/50525/",
+                "layeredsequence": "",
+                "secure": "1",
+                "users": "{admin,mfmckay,danAdmin,whortonAdmin,hortonw,kelsem,drm,smoore,mflorida}",
+                "root_element_name": "xnat:ctSessionData",
+                "id": "xs1571946006910",
+                "tag": "",
+                "sort_by_element_name": ""
+            },
+            {
+                "allow_diff_columns": "1",
+                "stored_search_info": "6",
+                "extension": "93",
+                "sort_by_field_id": "",
+                "brief_description": "Read | Dan QR Demo | 45",
+                "description": "",
+                "layeredsequence": "",
+                "secure": "1",
+                "users": "{smoore,danAdmin,bob,mflorida}",
+                "root_element_name": "xnat:mrSessionData",
+                "id": "xs1572063149659",
+                "tag": "",
+                "sort_by_element_name": ""
+            }
+        ],
+        "title": "Stored Searches"
+    }
+}

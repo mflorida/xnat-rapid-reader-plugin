@@ -12,14 +12,36 @@ export default function RadReadFormWrapper(props){
     const { itemData, templateId } = props;
 
     // omit template id from worklist or use '-' (hyphen) or '0' to be explicit about not using a template
-    const useForm = templateId && !/^[-0]$/.test(templateId);
+    let useForm = templateId && /^[^-0]/i.test(templateId);
 
-    // prefix template id with an underscore to use a locally-stored template - store in /public/forms
-    const localForm = templateId.charAt(0) === '_';
+    const localRegex = /^[*~:/]/;
 
-    const templateUrl = localForm ?
-        `${server.appUrl}/forms/${templateId}.html` :
+    // prefix template id with '*' or ':' to use a locally-stored template
+    // either as a stored XNAT resource file or other accessible html file
+    const isLocalForm = localRegex.test(templateId);
+
+    // use a form template from '/read/forms/Template_Name.html'
+    // *Template_Name
+    let formFile = `${server.appUrl}/forms/${templateId.replace(localRegex, '').replace(/\.html$/, '')}.html`;
+    //
+    console.log(formFile);
+    
+    // use a form stored as a resource on the server?
+    // use the full url with colons ':' instead of '/' in the url path
+    // :data:projects:AbCTSeg:resources:4664:files:Thoraxfoto.html
+    let formResource = (`${server.siteUrl}/${templateId.replace(localRegex, '').replace(/[:]/g, '/').replace(/\/+/, '/')}`);
+    //
+    console.log(formResource);
+
+    let templateUrl = isLocalForm ?
+        (templateId.charAt(0) === '*' ? formFile : formResource) :
         `https://phpapi.rsna.org/radreport/v1/templates/${templateId}/details`;
+    //
+    console.log(templateUrl);
+
+    if (/[-0]/i.test(templateId)) {
+        templateUrl = '';
+    }
 
     const [templateResponse, templateRequest] = useRequest({
         url: templateUrl,
@@ -34,7 +56,7 @@ export default function RadReadFormWrapper(props){
     // }, exptId);
 
     function FormTemplate(){
-        const templateHTML = templateResponse.data.DATA.templateData;
+        const templateHTML = isLocalForm ? templateResponse.data : templateResponse.data.DATA.templateData;
         const templateBody = /<body>/.test(templateHTML) ? templateHTML.split('<body>')[1].split('</body>')[0] : templateHTML;
         return (
             <div
@@ -47,7 +69,7 @@ export default function RadReadFormWrapper(props){
 
     // populate form fields if there's assessor data stored
     function populateForm(go){
-        if (go) {
+        if (useForm && go) {
 
             const getAssessors = axios({
                 url: `${server.siteUrl}/data/experiments/${itemData.expt_id}/assessors?xsiType=rad:genRadiologyReadData&format=json`,
