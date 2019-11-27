@@ -25,7 +25,7 @@ export default function RadReadFormWrapper(props){
     let formFile = `${server.appUrl}/forms/${templateId.replace(localRegex, '').replace(/\.html$/, '')}.html`;
     //
     console.log(formFile);
-    
+
     // use a form stored as a resource on the server?
     // use the full url with colons ':' instead of '/' in the url path
     // :data:projects:AbCTSeg:resources:4664:files:Thoraxfoto.html
@@ -39,7 +39,7 @@ export default function RadReadFormWrapper(props){
     //
     console.log(templateUrl);
 
-    if (/[-0]/i.test(templateId)) {
+    if (/^[-0]$/i.test(templateId)) {
         templateUrl = '';
     }
 
