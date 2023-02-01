@@ -9,5 +9,5 @@
 #dep*.txt
 #.nb-gradle/
 build
-!/rapid-reader
+!/rapid-reader-app
 *--ignore*
