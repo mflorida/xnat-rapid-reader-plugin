@@ -3,7 +3,7 @@
 #*.txt
 .gradle*
 #gradle
-#.idea
+.idea
 #out
 #target
 #dep*.txt
